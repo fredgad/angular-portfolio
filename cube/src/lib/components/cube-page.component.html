@@ -1,0 +1,21 @@
+<div class="container" (mouseup)="onMouseUp($event)" (mousemove)="onMouseMove($event)">
+  <div class="cube c_c_M">
+    <div *ngFor="let position of cubePositions$ | async | keyvalue; trackBy: trackByFn"
+      class="layer_Top" [class]="position.key"
+      [ngStyle]="{ 'transform': 'rotateX(' + position.value.topLayer.posT_X + 'deg) rotateY(' + position.value.topLayer.posT_Y + 'deg) rotateZ(' + position.value.topLayer.posT_Z + 'deg)' }">
+        <cube-edge
+          class="layer_Bot"
+          [class]="position.key"
+          [classInput]="position.key"
+          [attr.axes]="position.value.axes"
+          
+          [ngStyle]="{ 'transform': 'rotateX(' + position.value.botLayer.pos_X + 'deg) rotateY(' + position.value.botLayer.pos_Y + 'deg)' }"
+          (wheel)="onWheelCube($event, position)"
+          (mousedown)="onMouseDown($event, position)">
+        </cube-edge>
+    </div>
+  </div>
+</div>
+<!-- (click)="onClickCube(position)" -->
+<!-- [ngStyle]="{ 'transform': 'rotateX(' + position.value.posX + 'deg) rotateY(' + position.value.posY + 'deg) rotateZ(' + position.value.posZ + 'deg)'  }" -->
+<!-- [position]="position" -->

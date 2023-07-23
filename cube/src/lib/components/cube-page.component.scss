@@ -1,0 +1,349 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #222;
+  transform-style: preserve-3d;
+  perspective: 120rem;
+  box-sizing: border-box;
+
+  .cube {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 10rem;
+    width: 10rem;
+    transition: 0s;
+    transform-style: preserve-3d;
+    perspective: 10000px;
+    transform: rotateX(0) rotateY(0);
+    transform: rotateX(-35deg) rotateY(45deg);
+
+    .layer_Top {
+      position: absolute;
+      transition: 0s;
+      height: 30rem;
+      width: 30rem;
+      transform-style: preserve-3d;
+      perspective: 10000px;
+      // display: none;
+
+      &.t_l_F {
+        display: flex !important;
+      }
+    }
+
+    ::ng-deep cube-edge {
+      position: absolute;
+      height: 30rem;
+      width: 30rem;
+      transform-style: preserve-3d;
+      perspective: 10000px;
+      transition: 0s;
+      // cursor: grab;
+
+      > div {
+        position: absolute;
+        height: 10rem;
+        width: 10rem;
+      }
+
+      &.t_l_F {
+        transform: rotateX(0) rotateY(0);
+
+        .top {
+          transform: translateZ(5rem) rotateX(90deg);
+          transform-origin: 100% 0;
+        }
+        .left {
+          transform: translateZ(5rem) rotateY(-90deg);
+          transform-origin: 0% 0%;
+        }
+        .front {
+          transform: translateZ(15rem);
+        }
+      }
+
+      &.t_c_F {
+        .top {
+          transform: translate3d(10rem, 0, 5rem) rotateX(90deg);
+          transform-origin: 100% 0;
+        }
+        .front {
+          transform: translate3d(10rem, 0, 15rem);
+        }
+      }
+
+      &.t_r_F {
+        .top {
+          transform: translate3d(20rem, 0, 5rem) rotateX(90deg);
+          transform-origin: 100% 0;
+        }
+        .front {
+          transform: translate3d(20rem, 0, 15rem);
+        }
+        .right {
+          transform: translate3d(20rem, 0, 15rem) rotateY(-90deg);
+          transform-origin: 100% 0;
+        }
+      }
+
+      &.c_l_F {
+        .left {
+          transform: translate3d(0, 10rem, 5rem) rotateY(-90deg);
+          transform-origin: 0% 0%;
+        }
+        .front {
+          transform: translate3d(0, 10rem, 15rem);
+        }
+      }
+      &.c_c_F {
+        .front {
+          transform: translate3d(10rem, 10rem, 15rem);
+        }
+      }
+      &.c_r_F {
+        .front {
+          transform: translate3d(20rem, 10rem, 15rem);
+        }
+        .right {
+          transform: translate3d(20rem, 10rem, 15rem) rotateY(-90deg);
+          transform-origin: 100% 0;
+        }
+      }
+      &.b_l_F {
+        .left {
+          transform: translate3d(0, 20rem, 5rem) rotateY(-90deg);
+          transform-origin: 0% 0%;
+        }
+        .front {
+          transform: translate3d(0, 20rem, 15rem);
+        }
+        .bot {
+          transform: translate3d(0, 20rem, 15rem) rotateX(90deg);
+          transform-origin: 0% 100%;
+        }
+      }
+      &.b_c_F {
+        .front {
+          transform: translate3d(10rem, 20rem, 15rem);
+        }
+        .bot {
+          transform: translate3d(10rem, 20rem, 15rem) rotateX(90deg);
+          transform-origin: 0% 100%;
+        }
+      }
+      &.b_r_F {
+        .front {
+          transform: translate3d(20rem, 20rem, 15rem);
+        }
+        .right {
+          transform: translate3d(20rem, 20rem, 15rem) rotateY(-90deg);
+          transform-origin: 100% 0;
+        }
+        .bot {
+          transform: translate3d(20rem, 20rem, 15rem) rotateX(90deg);
+          transform-origin: 0% 100%;
+        }
+      }
+
+      &.t_l_M {
+        .top {
+          transform: translateZ(-5rem) rotateX(90deg);
+          transform-origin: 100% 0;
+        }
+        .left {
+          transform: translateZ(-5rem) rotateY(-90deg);
+          transform-origin: 0% 0%;
+        }
+      }
+
+      &.t_c_M {
+        .top {
+          transform: translate3d(10rem, 0, -5rem) rotateX(90deg);
+          transform-origin: 100% 0;
+        }
+      }
+
+      &.t_r_M {
+        .top {
+          transform: translate3d(20rem, 0, -5rem) rotateX(90deg);
+          transform-origin: 100% 0;
+        }
+        .right {
+          transform: translate3d(20rem, 0, -5rem) rotateY(90deg);
+          transform-origin: 100% 0;
+        }
+      }
+
+      &.c_l_M {
+        .left {
+          transform: translate3d(0, 10rem, 5rem) rotateY(90deg);
+          transform-origin: 0% 0%;
+        }
+      }
+      &.c_r_M {
+        .right {
+          transform: translate3d(20rem, 10rem, -5rem) rotateY(90deg);
+          transform-origin: 100% 0;
+        }
+      }
+      &.b_l_M {
+        .left {
+          transform: translate3d(0, 20rem, 5rem) rotateY(90deg);
+          transform-origin: 0% 0%;
+        }
+
+        .bot {
+          transform: translate3d(0, 20rem, 5rem) rotateX(90deg);
+          transform-origin: 0% 100%;
+        }
+      }
+      &.b_c_M {
+        .bot {
+          transform: translate3d(10rem, 20rem, 5rem) rotateX(90deg);
+          transform-origin: 0% 100%;
+        }
+      }
+      &.b_r_M {
+        .right {
+          transform: translate3d(20rem, 20rem, 5rem) rotateY(-90deg);
+          transform-origin: 100% 0;
+        }
+        .bot {
+          transform: translate3d(20rem, 20rem, 5rem) rotateX(90deg);
+          transform-origin: 0% 100%;
+        }
+      }
+
+      &.t_l_B {
+        .top {
+          transform: translateZ(-15rem) rotateX(90deg);
+          transform-origin: 100% 0;
+        }
+        .left {
+          transform: translateZ(-15rem) rotateY(-90deg);
+          transform-origin: 0% 0%;
+        }
+        .back {
+          transform: translateZ(-15rem);
+        }
+      }
+
+      &.t_c_B {
+        .top {
+          transform: translate3d(10rem, 0, -15rem) rotateX(90deg);
+          transform-origin: 100% 0;
+        }
+        .back {
+          transform: translate3d(10rem, 0, -15rem);
+        }
+      }
+
+      &.t_r_B {
+        .top {
+          transform: translate3d(20rem, 0, -15rem) rotateX(90deg);
+          transform-origin: 100% 0;
+        }
+        .right {
+          transform: translate3d(20rem, 0, -15rem) rotateY(90deg);
+          transform-origin: 100% 0;
+        }
+        .back {
+          transform: translate3d(20rem, 0, -15rem);
+        }
+      }
+
+      &.c_l_B {
+        .left {
+          transform: translate3d(0, 10rem, -15rem) rotateY(-90deg);
+          transform-origin: 0% 0%;
+        }
+        .back {
+          transform: translate3d(0, 10rem, -15rem);
+        }
+      }
+      &.c_c_B {
+        .back {
+          transform: translate3d(10rem, 10rem, -15rem);
+        }
+      }
+      &.c_r_B {
+        .right {
+          transform: translate3d(20rem, 10rem, -15rem) rotateY(90deg);
+          transform-origin: 100% 0;
+        }
+        .back {
+          transform: translate3d(20rem, 10rem, -15rem);
+        }
+      }
+      &.b_l_B {
+        .left {
+          transform: translate3d(0, 20rem, -15rem) rotateY(-90deg);
+          transform-origin: 0% 0%;
+        }
+        .bot {
+          transform: translate3d(0, 20rem, -15rem) rotateX(-90deg);
+          transform-origin: 0% 100%;
+        }
+        .back {
+          transform: translate3d(0, 20rem, -15rem);
+        }
+      }
+      &.b_c_B {
+        .bot {
+          transform: translate3d(10rem, 20rem, -15rem) rotateX(-90deg);
+          transform-origin: 0% 100%;
+        }
+        .back {
+          transform: translate3d(10rem, 20rem, -15rem);
+        }
+      }
+      &.b_r_B {
+        .right {
+          transform: translate3d(20rem, 20rem, -15rem) rotateY(90deg);
+          transform-origin: 100% 0;
+        }
+        .bot {
+          transform: translate3d(20rem, 20rem, -15rem) rotateX(-90deg);
+          transform-origin: 0% 100%;
+        }
+        .back {
+          transform: translate3d(20rem, 20rem, -15rem);
+        }
+      }
+    }
+  }
+}
+
+.green {
+  background: #04ff792e;
+  // border: 1px solid green;
+}
+.blue {
+  background: #2104ff2e;
+  // border: 1px solid blue;
+}
+.yellow {
+  background: #e6ff042e;
+  // border: 1px solid yellow;
+}
+
+.red {
+  background: #ff04082e;
+  // border: 1px solid red;
+}
+.white {
+  background: #ffffff2e;
+  // border: 1px solid white;
+}
+.orange {
+  background: #ffae002e;
+  // border: 1px solid orange;
+}

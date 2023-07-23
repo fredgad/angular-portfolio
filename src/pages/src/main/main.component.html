@@ -1,0 +1,13 @@
+<div class="main-wrapper" appParent>
+  <app-gear [screen]="currentScreen()"></app-gear>
+
+  <div appChild class="screens" [@screensTrigger]="screens[currentScreen()]">
+    <app-first-screen></app-first-screen>
+    <app-second-screen (tabsEnteredOutput)="onTabsEntered($event)"></app-second-screen>
+    <app-third-screen></app-third-screen>
+    <app-fourth-screen></app-fourth-screen>
+  </div>
+
+</div>
+
+<app-nav-bar></app-nav-bar>

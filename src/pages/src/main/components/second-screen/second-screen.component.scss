@@ -1,0 +1,66 @@
+.second-screen {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: white;
+
+  font-family: Roboto, sans-serif;
+
+  // > div {
+  //   height: 100vh;
+  // }
+
+  .about {
+    position: relative;
+    background: #222;
+    width: 45vw;
+    z-index: 9;
+
+    h2 {
+      position: relative;
+      display: flex;
+      align-items: center;
+      left: 40%;
+      width: 60%;
+      min-width: 200px;
+      height: 20%;
+      color: #fff;
+    }
+    .about__menu {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      // align-items: center;
+      justify-content: center;
+      left: 40%;
+      width: 60%;
+      min-width: 200px;
+      height: 60%;
+      color: #fff;
+
+      > div {
+        cursor: pointer;
+        padding: 2vh 0 2vh 0;
+        width: 120px;
+        font-size: 18px;
+      }
+      span {
+        position: relative;
+        display: block;
+        height: 2px;
+        width: 0px;
+        background: #932e96;
+        border-right: 0px solid #fff;
+        transition: 0.6s;
+      }
+      .element:hover + span {
+        width: 100px;
+        border-right: 40px solid #fff;
+      }
+    }
+  }
+
+  app-tabs {
+    display: flex;
+  }
+}

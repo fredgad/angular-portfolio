@@ -1,0 +1,131 @@
+@import '../../../styles/keyframes.scss';
+
+.field {
+  position: fixed;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotateForvard 6s linear infinite;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% -15.4rem;
+  perspective: 9e9999px;
+
+  .cont {
+    position: relative;
+    width: 11rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50% -15.4rem;
+    transition: 0.8s;
+    transition-timing-function: linear;
+    animation: rotateSide 12s linear infinite;
+    perspective: 9e9999px;
+
+    .one {
+      transform: translateY(-10rem) rotateX(36deg);
+    }
+
+    .two {
+      transform: translateY(-18.1rem) translateZ(-5.9rem) rotateX(72deg);
+    }
+
+    .three {
+      transform: translateZ(-15.4rem) translateY(-21.2rem) rotateX(108deg);
+    }
+
+    .four {
+      transform: translateZ(-24.9rem) translateY(-18.1rem) rotateX(144deg);
+    }
+
+    .five {
+      transform: translateZ(-30.8rem) translateY(-10rem) rotateX(180deg);
+    }
+
+    .six {
+      transform: translateZ(-30.8rem) rotateX(-144deg);
+    }
+
+    .seven {
+      transform: translateZ(-24.9rem) translateY(8.1rem) rotateX(-108deg);
+    }
+
+    .eight {
+      transform: translateZ(-15.4rem) translateY(11.2rem) rotateX(-72deg);
+    }
+
+    .nine {
+      transform: translateZ(-5.9rem) translateY(8.1rem) rotateX(-36deg);
+    }
+
+    .side1 {
+      transform: translateZ(-15.4rem) translateX(-10rem) translateY(-11rem)
+        rotateY(-90deg);
+
+      div {
+        width: 22rem;
+        height: 22rem;
+      }
+    }
+
+    .side2 {
+      transform: translateZ(-15.4rem) translateX(10rem) translateY(-11rem)
+        rotateY(90deg);
+
+      div {
+        height: 20rem;
+      }
+    }
+
+    .side1,
+    .side2 {
+      background: radial-gradient(
+        rgba(255, 255, 255, 0.274),
+        transparent,
+        transparent
+      );
+      height: 33rem;
+      width: 33rem;
+      border-radius: 50%;
+
+      > div:hover {
+        border: none;
+      }
+    }
+
+    > div {
+      position: absolute;
+      height: 10rem;
+      width: 20rem;
+      border-top: 2px solid transparent;
+      transform-origin: 50% 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 5rem;
+      background: rgba(255, 255, 255, 0.164);
+      transform-style: preserve-3d;
+
+      > div:hover {
+        box-shadow: inset 2px 2px 10px gold, inset -2px -2px 10px gold;
+      }
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        height: 10rem;
+        width: 20rem;
+        background-size: contain;
+        backface-visibility: hidden;
+        background-repeat: no-repeat;
+        overflow: visible;
+        background-position: 50% 50%;
+      }
+    }
+  }
+}

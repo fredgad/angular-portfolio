@@ -1,0 +1,18 @@
+<div class="second-screen">
+  <div class="about">
+      <h2 data-r="О чём" data-e="About" class="L">About</h2>
+      
+      <div class="about__menu">
+          <div #aboutMeRef class="about__menu_about-me element" (mouseover)="onMouseOver($event, 0)">About me</div>
+          <span></span>
+          <div class="about__menu_skills element L" (mouseover)="onMouseOver($event, 1)">Skills</div>
+          <span></span>
+          <div class="about__menu_experience element L" (mouseover)="onMouseOver($event, 2)">Experience</div>
+          <span></span>
+          <div class="about__menu_contacts element L" (mouseover)="onMouseOver($event, 3)">Contacts</div>
+          <span></span>
+      </div>
+  </div>
+
+  <app-tabs (tabsEnteredOutput)="onTabsEntered($event)"></app-tabs>
+</div>

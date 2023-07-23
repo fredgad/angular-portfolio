@@ -15,8 +15,20 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-portfolio/cube": ["cube/src/index.ts"],
-      "@angular-portfolio/pong": ["pong/src/index.ts"]
+      "@angular-portfolio/rotate": ["rotate/src/index.ts"],
+      "@animations": ["src/shared/src/animations/index.ts"],
+      "@app/cube": ["cube/src/index.ts"],
+      "@app/features": ["src/features/src/index.ts"],
+      "@app/pages": ["src/pages/src/index.ts"],
+      "@app/shared": ["src/shared/src/index.ts"],
+      "@app/ui": ["src/ui/src/index.ts"],
+      "@constants": ["src/shared/src/constants/index.ts"],
+      "@directives": ["src/shared/src/directives/index.ts"],
+      "@interfaces": ["src/shared/src/interfaces/index.ts"],
+      "@keyframes": ["src/styles/keyframes.scss"],
+      "@pipes": ["src/shared/src/pipes/index.ts"],
+      "@services": ["src/shared/src/services/index.ts"],
+      "@tokens": ["src/shared/src/tokens/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

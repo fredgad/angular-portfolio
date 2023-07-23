@@ -1,0 +1,43 @@
+// @import 'variables';
+
+.main-wrapper {
+  height: 100vh;
+  width: 100vw;
+  background: grey;
+  overflow: hidden;
+
+  app-gear {
+  }
+
+  .screens {
+    display: flex;
+    position: relative;
+    height: 200vh;
+    width: 300vw;
+
+    app-first-screen,
+    app-second-screen,
+    app-third-screen,
+    app-fourth-screen {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    app-second-screen {
+      position: absolute;
+      left: 100vw;
+      top: 0;
+    }
+    app-third-screen {
+      position: absolute;
+      left: 100vw;
+      top: 100vh;
+    }
+    app-fourth-screen {
+      position: absolute;
+      left: 200vw;
+      top: 100vh;
+    }
+  }
+}

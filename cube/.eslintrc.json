@@ -17,7 +17,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "angular-portfolio",
+            "prefix": "cube",
             "style": "kebab-case"
           }
         ]

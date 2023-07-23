@@ -3,25 +3,9 @@
   "$schema": "../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "cube/src",
   "prefix": "angular-portfolio",
-  "tags": [],
+  "tags": ["lib:cube"],
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "options": {
-        "project": "cube/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "cube/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "cube/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
-    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

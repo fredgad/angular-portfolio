@@ -1,0 +1,5 @@
+<div 
+  *ngFor="let cubeColor of cubeColors | keyvalue; trackBy: trackByFn" 
+  [class]="cubeColor.value"
+  >
+</div>

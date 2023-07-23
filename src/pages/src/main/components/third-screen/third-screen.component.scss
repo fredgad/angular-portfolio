@@ -1,0 +1,14 @@
+.anime {
+  width: 400px;
+  border: 2px solid red;
+  height: 400px;
+  font-size: 20px;
+  margin-right: auto;
+
+  .element {
+    background: blue;
+    margin: 10px;
+    // // animation-fill-mode: forwards;
+    // width: 0;
+  }
+}

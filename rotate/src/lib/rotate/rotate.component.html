@@ -1,0 +1,63 @@
+<div class="wrapper_1">
+  <div class="cube"
+    [ngStyle]="{ 'transform': 'rotateX(' + transform().X + 'deg) rotateY(' + transform().Y + 'deg) rotateZ(' + transform().Z + 'deg)' }"
+    >
+    <div class="cube cube_2"
+    [ngStyle]="{ 'transform': ' rotateX(' + transform2().X + 'rad) rotateY(' + transform2().Y + 'rad) rotateZ(' + transform2().Z + 'rad) scale3d(1, -1, 1)' }"
+    >
+      <div class="cube cube_3"
+      [ngStyle]="{ 'transform': 'rotateX(' + transform3().X + 'deg) rotateY(' + transform3().Y + 'deg) rotateZ(' + transform3().Z + 'deg)' }"
+      >
+        <div class="face front green">Front</div>
+        <div class="face back blue">Back</div>
+        <div class="face top red">Top</div>
+        <div class="face bottom ">Bottom</div>
+        <div class="face left ">Left</div>
+        <div class="face right ">Right</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrapper_2">
+  <div class="container">
+    <button (click)="addPos('X', -90)" class="button upB">Up</button>
+    <button (click)="addPos('X', 90)" class="button downB">Down</button>
+    <button (click)="addPos('Y', 90)" class="button leftB">Left</button>
+    <button (click)="addPos('Y', -90)" class="button rightB">Right</button>
+
+  </div>
+  <tr></tr>
+  <div class="container_2">
+    <button (click)="addPos('Z', -90)" class="button sideB">Z+</button>
+    <button (click)="addPos('Z', 90)" class="button sideB">Z-</button>
+  </div>
+</div>
+
+<div class="wrapper_3">
+  <div class="container">
+    <button (click)="addPos2('X', -90)" class="button upB">Up2</button>
+    <button (click)="addPos2('X', 90)" class="button downB">Down2</button>
+    <button (click)="addPos2('Y', 90)" class="button leftB">Lef2t</button>
+    <button (click)="addPos2('Y', -90)" class="button rightB">Right2</button>
+
+  </div>
+  <tr></tr>
+  <div class="container_2">
+    <button (click)="addPos2('Z', -90)" class="button sideB">Z+2</button>
+    <button (click)="addPos2('Z', 90)" class="button sideB">Z-2</button>
+  </div>
+</div>
+<div class="wrapper_4">
+  <div class="container">
+    <button (click)="addPos3('X', -90)" class="button upB">Up2</button>
+    <button (click)="addPos3('X', 90)" class="button downB">Down2</button>
+    <button (click)="addPos3('Y', 90)" class="button leftB">Lef2t</button>
+    <button (click)="addPos3('Y', -90)" class="button rightB">Right2</button>
+
+  </div>
+  <tr></tr>
+  <div class="container_2">
+    <button (click)="addPos3('Z', -90)" class="button sideB">Z+2</button>
+    <button (click)="addPos3('Z', 90)" class="button sideB">Z-2</button>
+  </div>
+</div>

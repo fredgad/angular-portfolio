@@ -20,7 +20,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "angular-portfolio",
+            "prefix": "app",
             "style": "kebab-case"
           }
         ]

@@ -1,0 +1,33 @@
+// You can add global variables for site theme or include files with some global variables. For example, variables for colors.
+// @import 'colors';
+$red-color: red;
+$content-max-width: 1600px;
+$base-z-index: 1000;
+$intermediate-large-breakpoint: 1440px;
+
+// Page main content max width on some window width (without sidebar)
+$content-container-xlarge-max-width: 1340px;
+$content-container-large-max-width: 100%;
+$content-container-medium-max-width: 100%;
+
+$gutter: 8px; // main gutter for a whole site
+
+// Page main content horizontal gutters on some window width (without sidebar)
+$content-container-xlarge-horizontal-gutters: 48px;
+$content-container-large-horizontal-gutters: 48px;
+$content-container-medium-horizontal-gutters: 40px;
+$content-container-small-horizontal-gutters: 32px;
+$content-container-xsmall-horizontal-gutters: 16px;
+
+// Base grid container width
+$container-small-max-width: 964px;
+$container-medium-max-width: 980px;
+$container-large-max-width: 1240px;
+
+$lu-border-radius: 8px;
+
+$lu-transition-duration: 0.2s;
+$lu-transition-duration-250: 0.25s;
+$sidebar-width-xlarge-up: 272px;
+$sidebar-width-xlarge-down: 256px;
+$static-menu-width: 192px;

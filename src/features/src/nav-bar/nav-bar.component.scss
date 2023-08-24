@@ -232,15 +232,21 @@
   html {
     font-size: 6px;
   }
-  #nav.navOpen {
-    width: 0px;
-    #navButton {
-      transform: translate(30px);
+  #nav {
+    .navbar {
+      left: 65px;
+    }
+    &.navOpen {
+      width: 0px;
+      #navButton {
+        transform: translate(30px);
+      }
+    }
+    .navbarOpen {
+      left: 44px;
     }
   }
-  #nav .navbarOpen {
-    left: 44px;
-  }
+
   main #pages .skills > div > div p {
     width: 105px;
     min-width: 105px;

@@ -7,17 +7,9 @@ export interface CubePositionsI {
 }
 
 export interface CubePositionI {
-  botLayer: {
-    pos_X: number;
-    pos_Y: number;
-    pos_Z: number;
-  };
-  topLayer: {
-    posT_X: number;
-    posT_Y: number;
-    posT_Z: number;
-  };
-  axes: string[];
+  pos_X: number;
+  pos_Y: number;
+  pos_Z: number;
 }
 
 export interface CubeColorsI {

@@ -17,6 +17,7 @@ export class TabsComponent {
   public tabsPositions$: any = this.tabsService.tabsPositions$;
 
   public tabsPositions: string[] = this.tabsService.tabsPositions$.value;
+  public currentTab$i = this.tabsService.currentTab$i;
 
   private aboutEntered = false;
 
@@ -28,7 +29,7 @@ export class TabsComponent {
   public ngOnInit(): void {
     this.tabsPositions$.subscribe((x: any) => {
       this.tabsPositions = x;
-      // console.log(x, 'posc');
+      console.log(x, 'posc');
     });
   }
 }

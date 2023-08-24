@@ -21,7 +21,7 @@ export class NavBarComponent {
   public barMenu: BarMenuI[] = BarMenu;
 
   public toggleNav(): void {
-    // console.log('barMenu', this.barMenu);
+    console.log('barMenu', this.barMenu);
     if (this.pause) return;
 
     this.pause = true;

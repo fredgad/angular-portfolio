@@ -4,7 +4,7 @@ import {
   CubePositionI,
   GenericKeyStringObject,
 } from '../entities/cube.interfaces';
-import { Observable, timer } from 'rxjs';
+import { Observable, takeWhile, timer } from 'rxjs';
 import { CubeFacade } from '../store/cube.facade';
 import { EdgeCubeComponent } from './edge-cube/edge-cube.component';
 import { StoreModule } from '@ngrx/store';
@@ -31,18 +31,12 @@ export class CubePageComponent {
 
   private currentKey = '';
   private currentValues: CubePositionI = {
-    botLayer: {
-      pos_X: 0,
-      pos_Y: 0,
-      pos_Z: 0,
-    },
-    topLayer: {
-      posT_X: 0,
-      posT_Y: 0,
-      posT_Z: 0,
-    },
-    axes: [],
+    pos_X: 0,
+    pos_Y: 0,
+    pos_Z: 0,
   };
+
+  private cubeStrikt = false;
 
   private cubeKeys = Object.keys(CubeInitialPositions);
 
@@ -53,37 +47,47 @@ export class CubePageComponent {
     this.cubePositions$.subscribe((x) => {
       console.log(x, 'CubePosition');
     });
-    this.cubeKeys.forEach((key) => {
-      timer(2000, 16).subscribe(() => {
-        const speed1 = Math.random() * 5;
-        const speed2 = Math.random() * 5;
-        const speed3 = Math.random() * 5;
-        const speed4 = Math.random() * 5;
-        const speed5 = Math.random() * 5;
-        const speed6 = Math.random() * 5;
+    timer(1000, 3000).subscribe(() => {
+      this.cubeKeys.forEach((key) => {
+        let speed1 = Math.random() * 360;
+        let speed2 = Math.random() * 360;
+        let speed3 = Math.random() * 360;
+        if (this.cubeStrikt === true) {
+          speed1 = 0;
+          speed2 = 0;
+          speed3 = 0;
+        }
 
         const changeTopPositions = {
           key: key,
           values: {
-            botLayer: {
-              pos_X: speed1,
-              pos_Y: speed2,
-              pos_Z: speed3,
-            },
-            topLayer: {
-              posT_X: speed4,
-              posT_Y: speed5,
-              posT_Z: speed6,
-            },
-            axes: this.currentValues.axes,
+            pos_X: speed1,
+            pos_Y: speed2,
+            pos_Z: speed3,
           },
         };
 
-        // this.cubeFacade.setAddCubePositions(changeTopPositions);
+        this.cubeFacade.setAddCubePositions(changeTopPositions);
       });
+      this.cubeStrikt = !this.cubeStrikt;
     });
+  }
 
-    console.log('z2');
+  public stopCube() {
+    this.cubeStrikt = !this.cubeStrikt;
+    console.log('sad');
+    this.cubeKeys.forEach((key) => {
+      const changeTopPositions = {
+        key: key,
+        values: {
+          pos_X: 0,
+          pos_Y: 0,
+          pos_Z: 0,
+        },
+      };
+
+      this.cubeFacade.setAddCubePositions(changeTopPositions);
+    });
   }
 
   public onWheelCube(
@@ -102,17 +106,9 @@ export class CubePageComponent {
     this.cubeFacade.setAddCubePositions({
       key: key,
       values: {
-        botLayer: {
-          pos_X: 0,
-          pos_Y: 0,
-          pos_Z: 0,
-        },
-        topLayer: {
-          posT_X: this.currentValues.topLayer.posT_X,
-          posT_Y: this.currentValues.topLayer.posT_Y,
-          posT_Z: tZdirection,
-        },
-        axes: this.currentValues.axes,
+        pos_X: this.currentValues.pos_X,
+        pos_Y: this.currentValues.pos_Y,
+        pos_Z: tZdirection,
       },
     });
   }
@@ -134,8 +130,8 @@ export class CubePageComponent {
     const offsetX = event.clientX - this.startX;
     const offsetY = event.clientY - this.startY;
 
-    let tXdirection = 0;
-    let tYdirection = 0;
+    let Xdirection = 0;
+    let Ydirection = 0;
 
     if (Math.abs(offsetX) === Math.abs(offsetY)) {
       return;
@@ -143,18 +139,18 @@ export class CubePageComponent {
     if (Math.abs(offsetX) > Math.abs(offsetY)) {
       if (offsetX > 0) {
         console.log('Right');
-        tYdirection += 90;
+        Ydirection += 90;
       } else {
         console.log('Left');
-        tYdirection -= 90;
+        Ydirection -= 90;
       }
     } else {
       if (offsetY > 0) {
         console.log('Down');
-        tXdirection -= 90;
+        Xdirection -= 90;
       } else {
         console.log('Up');
-        tXdirection += 90;
+        Xdirection += 90;
       }
     }
 
@@ -162,11 +158,10 @@ export class CubePageComponent {
       key: this.currentKey,
       values: {
         topLayer: {
-          posT_X: this.currentValues.topLayer.posT_X + tXdirection,
-          posT_Y: this.currentValues.topLayer.posT_Y + tYdirection,
-          posT_Z: this.currentValues.topLayer.posT_Z,
+          posT_X: this.currentValues.pos_X + Xdirection,
+          posT_Y: this.currentValues.pos_Y + Ydirection,
+          posT_Z: this.currentValues.pos_Z,
         },
-        axes: this.currentValues.axes,
       },
     };
 

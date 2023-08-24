@@ -22,7 +22,6 @@
     transition: 0s;
     transform-style: preserve-3d;
     perspective: 10000px;
-    transform: rotateX(0) rotateY(0);
     transform: rotateX(-35deg) rotateY(45deg);
 
     .layer_Top {
@@ -45,7 +44,7 @@
       width: 30rem;
       transform-style: preserve-3d;
       perspective: 10000px;
-      transition: 0s;
+      transition: 2.8s ease-out;
       // cursor: grab;
 
       > div {

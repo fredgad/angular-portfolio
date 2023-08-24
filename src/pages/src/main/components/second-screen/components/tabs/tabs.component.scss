@@ -49,7 +49,7 @@
       overflow-x: hidden;
 
       .frame {
-        margin-top: 300px;
+        // margin-top: 300px;
         transform-origin: 50% 50%;
         position: relative;
         margin-left: auto;
@@ -129,21 +129,12 @@
 
       > div {
         display: flex;
-        flex-direction: column;
         position: relative;
         width: auto;
         left: 0;
-        width: 60vw;
 
-        > div {
-          display: flex;
-          width: 55vw;
-          position: relative;
-
-          > span {
-            display: block;
-            top: 22.5px;
-          }
+        > span {
+          display: block;
         }
       }
 
@@ -152,30 +143,36 @@
         transition: 4s;
       }
       .skills__cont_css span {
+        width: 53%;
+        transition: 3.5s;
+      }
+      .skills__cont_js span {
+        width: 50%;
+        transition: 3.6s;
+      }
+      .skills__cont_angular span {
         width: 50%;
         transition: 4s;
       }
-      .skills__cont_js span {
-        width: 40%;
-        transition: 3.2s;
-      }
-      .skills__cont_jquery span {
-        width: 35%;
-        transition: 3s;
+      .skills__cont_react span {
+        width: 30%;
+        transition: 2.2s;
       }
       .skills__cont_vue span {
         width: 20%;
         transition: 1.6s;
       }
+      .skills__cont_jquery span {
+        width: 35%;
+        transition: 3s;
+      }
+
       .skills__cont_php span {
         width: 15%;
         transition: 1.2s;
       }
-      .skills__cont_gulp span {
-        width: 15%;
-        transition: 1.2s;
-      }
-      .skills__cont_sass span {
+
+      .skills__cont_git span {
         width: 30%;
         transition: 2.4s;
       }
@@ -187,26 +184,24 @@
         width: 48%;
         transition: 4s;
       }
-      .skills__cont_ajax span {
-        width: 45%;
+      .skills__cont_firebase span {
+        width: 25%;
         transition: 3.8s;
       }
-      .skills__cont_react span {
-        width: 11%;
-        transition: 0.88s;
-      }
+
       .skills__cont_english span {
         width: 38%;
         transition: 3s;
       }
-
-      span.linePlus {
-        transition: 0s;
-        width: 0px;
-      }
     }
     .skills__cont:hover {
       box-shadow: inset -3px 0px 5px #932e96;
+    }
+    .skills__cont.lineOff {
+      div span {
+        transition: 0s;
+        width: 0px;
+      }
     }
     > div > div {
       padding: 0;
@@ -214,8 +209,7 @@
       align-items: center;
 
       p {
-        width: 140px;
-        min-width: 140px;
+        min-width: 80px;
         position: relative;
         left: 2vw;
         background: #fff;

@@ -15,7 +15,7 @@ export const initialState: CubeStatePropsI = {
 const cubeReducer = createReducer(
   initialState,
   on(CubeActions.addCubePositions, (state, { props }) => {
-    console.log(state, props, ' addCubePositions : state, props');
+    // console.log(state, props, ' addCubePositions : state, props');
     return {
       ...state,
       data: {

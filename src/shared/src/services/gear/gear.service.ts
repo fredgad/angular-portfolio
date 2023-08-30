@@ -43,7 +43,6 @@ export class GearService {
       this.currentScreen$i() === MAX_GEAR_SCREEN
         ? MAX_GEAR_SCREEN
         : this.currentScreen$i() + 1;
-
     this.currentScreen$i.set(newScreen);
     this.changeGearPositionByScreen(newScreen);
   }

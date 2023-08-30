@@ -28,6 +28,7 @@ export class CubeFacade {
   constructor(private store$: Store<AppWithCubeState>) {}
 
   public setAddCubePositions(props: any): void {
+    // console.log(props, 'props setAddCubePositions');
     this.store$.dispatch(CubeActions.addCubePositions({ props }));
   }
 }

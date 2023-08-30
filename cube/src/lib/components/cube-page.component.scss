@@ -1,3 +1,15 @@
+@keyframes rotate-cube {
+  0% {
+    transform: rotateX(45deg) rotateY(0deg);
+  }
+  50% {
+    transform: rotateX(-45deg) rotateY(180deg);
+  }
+  100% {
+    transform: rotateX(45deg) rotateY(360deg);
+  }
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -9,28 +21,34 @@
   overflow: hidden;
   background: #222;
   transform-style: preserve-3d;
-  perspective: 120rem;
+  perspective: 28vmin;
   box-sizing: border-box;
 
+  .explode_button {
+    position: absolute;
+    bottom: 50px;
+  }
   .cube {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    height: 10rem;
-    width: 10rem;
-    transition: 0s;
+    height: 20vmin;
+    width: 20vmin;
+    transition: 3s;
     transform-style: preserve-3d;
-    perspective: 10000px;
-    transform: rotateX(-35deg) rotateY(45deg);
+    perspective: 100000px;
+    transform: rotateX(55deg) rotateY(180deg);
+
+    animation: rotate-cube 24s linear infinite;
 
     .layer_Top {
       position: absolute;
-      transition: 0s;
-      height: 30rem;
-      width: 30rem;
+      transition: 3s;
+      height: 60vmin;
+      width: 60vmin;
       transform-style: preserve-3d;
-      perspective: 10000px;
+      perspective: 100000px;
       // display: none;
 
       &.t_l_F {
@@ -40,281 +58,311 @@
 
     ::ng-deep cube-edge {
       position: absolute;
-      height: 30rem;
-      width: 30rem;
+      height: 600vmin;
+      width: 600vmin;
       transform-style: preserve-3d;
-      perspective: 10000px;
-      transition: 2.8s ease-out;
+      perspective: 100000px;
+      transition: 0.4s;
+
       // cursor: grab;
 
+      &.straight {
+        transition: 3s;
+        height: 60vmin;
+        width: 60vmin;
+        > div {
+          transition: 3s;
+          opacity: 1;
+        }
+      }
       > div {
+        transition: 0.4s;
+        opacity: 0;
         position: absolute;
-        height: 10rem;
-        width: 10rem;
+        height: 20.1vmin;
+        width: 20.1vmin;
       }
 
       &.t_l_F {
         transform: rotateX(0) rotateY(0);
 
         .top {
-          transform: translateZ(5rem) rotateX(90deg);
+          transform: translate3d(-20vmin, 0, 30vmin) rotateX(-90deg)
+            rotateY(180deg);
           transform-origin: 100% 0;
         }
         .left {
-          transform: translateZ(5rem) rotateY(-90deg);
+          transform: translateZ(10vmin) rotateY(-90deg);
           transform-origin: 0% 0%;
         }
         .front {
-          transform: translateZ(15rem);
+          transform: translateZ(30vmin);
         }
       }
 
       &.t_c_F {
         .top {
-          transform: translate3d(10rem, 0, 5rem) rotateX(90deg);
+          transform: translate3d(0vmin, 0, 30vmin) rotateX(-90deg)
+            rotateY(180deg);
           transform-origin: 100% 0;
         }
         .front {
-          transform: translate3d(10rem, 0, 15rem);
+          transform: translate3d(20vmin, 0, 30vmin);
         }
       }
 
       &.t_r_F {
         .top {
-          transform: translate3d(20rem, 0, 5rem) rotateX(90deg);
+          transform: translate3d(20vmin, 0, 30vmin) rotateX(-90deg)
+            rotateY(180deg);
           transform-origin: 100% 0;
         }
         .front {
-          transform: translate3d(20rem, 0, 15rem);
+          transform: translate3d(40vmin, 0, 30vmin);
         }
         .right {
-          transform: translate3d(20rem, 0, 15rem) rotateY(-90deg);
+          transform: translate3d(40vmin, 0, 10vmin) rotateY(90deg);
           transform-origin: 100% 0;
         }
       }
 
       &.c_l_F {
         .left {
-          transform: translate3d(0, 10rem, 5rem) rotateY(-90deg);
+          transform: translate3d(0, 20vmin, 10vmin) rotateY(-90deg);
           transform-origin: 0% 0%;
         }
         .front {
-          transform: translate3d(0, 10rem, 15rem);
+          transform: translate3d(0, 20vmin, 30vmin);
         }
       }
       &.c_c_F {
         .front {
-          transform: translate3d(10rem, 10rem, 15rem);
+          transform: translate3d(20vmin, 20vmin, 30vmin);
         }
       }
       &.c_r_F {
         .front {
-          transform: translate3d(20rem, 10rem, 15rem);
+          transform: translate3d(40vmin, 20vmin, 30vmin);
         }
         .right {
-          transform: translate3d(20rem, 10rem, 15rem) rotateY(-90deg);
+          transform: translate3d(40vmin, 20vmin, 10vmin) rotateY(90deg);
           transform-origin: 100% 0;
         }
       }
       &.b_l_F {
         .left {
-          transform: translate3d(0, 20rem, 5rem) rotateY(-90deg);
+          transform: translate3d(0, 40vmin, 10vmin) rotateY(-90deg);
           transform-origin: 0% 0%;
         }
         .front {
-          transform: translate3d(0, 20rem, 15rem);
+          transform: translate3d(0, 40vmin, 30vmin);
         }
         .bot {
-          transform: translate3d(0, 20rem, 15rem) rotateX(90deg);
+          transform: translate3d(20vmin, 40vmin, 30vmin) rotateX(90deg)
+            rotateY(180deg);
           transform-origin: 0% 100%;
         }
       }
       &.b_c_F {
         .front {
-          transform: translate3d(10rem, 20rem, 15rem);
+          transform: translate3d(20vmin, 40vmin, 30vmin);
         }
         .bot {
-          transform: translate3d(10rem, 20rem, 15rem) rotateX(90deg);
+          transform: translate3d(40vmin, 40vmin, 30vmin) rotateX(90deg)
+            rotateY(180deg);
           transform-origin: 0% 100%;
         }
       }
       &.b_r_F {
         .front {
-          transform: translate3d(20rem, 20rem, 15rem);
+          transform: translate3d(40vmin, 40vmin, 30vmin);
         }
         .right {
-          transform: translate3d(20rem, 20rem, 15rem) rotateY(-90deg);
+          transform: translate3d(40vmin, 40vmin, 10vmin) rotateY(90deg);
           transform-origin: 100% 0;
         }
         .bot {
-          transform: translate3d(20rem, 20rem, 15rem) rotateX(90deg);
+          transform: translate3d(60vmin, 40vmin, 30vmin) rotateX(90deg)
+            rotateY(180deg);
           transform-origin: 0% 100%;
         }
       }
 
       &.t_l_M {
         .top {
-          transform: translateZ(-5rem) rotateX(90deg);
+          transform: translate3d(-20vmin, 0, 10vmin) rotateX(-90deg)
+            rotateY(180deg);
           transform-origin: 100% 0;
         }
         .left {
-          transform: translateZ(-5rem) rotateY(-90deg);
+          transform: translateZ(-10vmin) rotateY(-90deg);
           transform-origin: 0% 0%;
         }
       }
 
       &.t_c_M {
         .top {
-          transform: translate3d(10rem, 0, -5rem) rotateX(90deg);
+          transform: translate3d(0vmin, 0, 10vmin) rotateX(-90deg)
+            rotateY(180deg);
           transform-origin: 100% 0;
         }
       }
 
       &.t_r_M {
         .top {
-          transform: translate3d(20rem, 0, -5rem) rotateX(90deg);
+          transform: translate3d(20vmin, 0, 10vmin) rotateX(-90deg)
+            rotateY(180deg);
           transform-origin: 100% 0;
         }
         .right {
-          transform: translate3d(20rem, 0, -5rem) rotateY(90deg);
+          transform: translate3d(40vmin, 0, -10vmin) rotateY(90deg);
           transform-origin: 100% 0;
         }
       }
 
       &.c_l_M {
         .left {
-          transform: translate3d(0, 10rem, 5rem) rotateY(90deg);
+          transform: translate3d(0, 20vmin, -10vmin) rotateY(-90deg);
           transform-origin: 0% 0%;
         }
       }
       &.c_r_M {
         .right {
-          transform: translate3d(20rem, 10rem, -5rem) rotateY(90deg);
+          transform: translate3d(40vmin, 20vmin, -10vmin) rotateY(90deg);
           transform-origin: 100% 0;
         }
       }
       &.b_l_M {
         .left {
-          transform: translate3d(0, 20rem, 5rem) rotateY(90deg);
+          transform: translate3d(0, 40vmin, -10vmin) rotateY(-90deg);
           transform-origin: 0% 0%;
         }
 
         .bot {
-          transform: translate3d(0, 20rem, 5rem) rotateX(90deg);
+          transform: translate3d(20vmin, 40vmin, 10vmin) rotateX(90deg)
+            rotateY(180deg);
           transform-origin: 0% 100%;
         }
       }
       &.b_c_M {
         .bot {
-          transform: translate3d(10rem, 20rem, 5rem) rotateX(90deg);
+          transform: translate3d(40vmin, 40vmin, 10vmin) rotateX(90deg)
+            rotateY(180deg);
           transform-origin: 0% 100%;
         }
       }
       &.b_r_M {
         .right {
-          transform: translate3d(20rem, 20rem, 5rem) rotateY(-90deg);
+          transform: translate3d(40vmin, 40vmin, -10vmin) rotateY(90deg);
           transform-origin: 100% 0;
         }
         .bot {
-          transform: translate3d(20rem, 20rem, 5rem) rotateX(90deg);
+          transform: translate3d(60vmin, 40vmin, 10vmin) rotateX(90deg)
+            rotateY(180deg);
           transform-origin: 0% 100%;
         }
       }
 
       &.t_l_B {
         .top {
-          transform: translateZ(-15rem) rotateX(90deg);
+          transform: translate3d(-20vmin, 0, -10vmin) rotateX(-90deg)
+            rotateY(180deg);
           transform-origin: 100% 0;
         }
         .left {
-          transform: translateZ(-15rem) rotateY(-90deg);
+          transform: translateZ(-30vmin) rotateY(-90deg);
           transform-origin: 0% 0%;
         }
         .back {
-          transform: translateZ(-15rem);
+          transform: translateZ(-30vmin) rotateY(180deg);
         }
       }
 
       &.t_c_B {
         .top {
-          transform: translate3d(10rem, 0, -15rem) rotateX(90deg);
+          transform: translate3d(0vmin, 0, -10vmin) rotateX(-90deg)
+            rotateY(180deg);
           transform-origin: 100% 0;
         }
         .back {
-          transform: translate3d(10rem, 0, -15rem);
+          transform: translate3d(20vmin, 0, -30vmin) rotateY(180deg);
         }
       }
 
       &.t_r_B {
         .top {
-          transform: translate3d(20rem, 0, -15rem) rotateX(90deg);
+          transform: translate3d(20vmin, 0, -10vmin) rotateX(-90deg)
+            rotateY(180deg);
           transform-origin: 100% 0;
         }
         .right {
-          transform: translate3d(20rem, 0, -15rem) rotateY(90deg);
+          transform: translate3d(40vmin, 0, -30vmin) rotateY(90deg);
           transform-origin: 100% 0;
         }
         .back {
-          transform: translate3d(20rem, 0, -15rem);
+          transform: translate3d(40vmin, 0, -30vmin) rotateY(180deg);
         }
       }
 
       &.c_l_B {
         .left {
-          transform: translate3d(0, 10rem, -15rem) rotateY(-90deg);
+          transform: translate3d(0, 20vmin, -30vmin) rotateY(-90deg);
           transform-origin: 0% 0%;
         }
         .back {
-          transform: translate3d(0, 10rem, -15rem);
+          transform: translate3d(0, 20vmin, -30vmin) rotateY(180deg);
         }
       }
       &.c_c_B {
         .back {
-          transform: translate3d(10rem, 10rem, -15rem);
+          transform: translate3d(20vmin, 20vmin, -30vmin) rotateY(180deg);
         }
       }
       &.c_r_B {
         .right {
-          transform: translate3d(20rem, 10rem, -15rem) rotateY(90deg);
+          transform: translate3d(40vmin, 20vmin, -30vmin) rotateY(90deg);
           transform-origin: 100% 0;
         }
         .back {
-          transform: translate3d(20rem, 10rem, -15rem);
+          transform: translate3d(40vmin, 20vmin, -30vmin) rotateY(180deg);
         }
       }
       &.b_l_B {
         .left {
-          transform: translate3d(0, 20rem, -15rem) rotateY(-90deg);
+          transform: translate3d(0, 40vmin, -30vmin) rotateY(-90deg);
           transform-origin: 0% 0%;
         }
         .bot {
-          transform: translate3d(0, 20rem, -15rem) rotateX(-90deg);
+          transform: translate3d(20vmin, 40vmin, -10vmin) rotateX(90deg)
+            rotateY(180deg);
           transform-origin: 0% 100%;
         }
         .back {
-          transform: translate3d(0, 20rem, -15rem);
+          transform: translate3d(0, 40vmin, -30vmin) rotateY(180deg);
         }
       }
       &.b_c_B {
         .bot {
-          transform: translate3d(10rem, 20rem, -15rem) rotateX(-90deg);
+          transform: translate3d(40vmin, 40vmin, -10vmin) rotateX(90deg)
+            rotateY(180deg);
           transform-origin: 0% 100%;
         }
         .back {
-          transform: translate3d(10rem, 20rem, -15rem);
+          transform: translate3d(20vmin, 40vmin, -30vmin) rotateY(180deg);
         }
       }
       &.b_r_B {
         .right {
-          transform: translate3d(20rem, 20rem, -15rem) rotateY(90deg);
+          transform: translate3d(40vmin, 40vmin, -30vmin) rotateY(90deg);
           transform-origin: 100% 0;
         }
         .bot {
-          transform: translate3d(20rem, 20rem, -15rem) rotateX(-90deg);
+          transform: translate3d(60vmin, 40vmin, -10vmin) rotateX(90deg)
+            rotateY(180deg);
           transform-origin: 0% 100%;
         }
         .back {
-          transform: translate3d(20rem, 20rem, -15rem);
+          transform: translate3d(40vmin, 40vmin, -30vmin) rotateY(180deg);
         }
       }
     }

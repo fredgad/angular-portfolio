@@ -1,6 +1,6 @@
 // import { GearImagesI, GearPositionsI } from '@interfaces';
 
-import { GearImagesI, GearPositionsI } from '../interfaces';
+import { GearImagesI, GearPositionsI } from '@interfaces';
 
 export const MAX_GEAR_SCREEN = 3;
 export const MIN_GEAR_SCREEN = 0;
@@ -8,11 +8,11 @@ export const MIN_GEAR_SCREEN = 0;
 export const GearImages: GearImagesI[] = [
   {
     name: 'zero',
-    path: 'gear/sass.png',
+    path: 'gear/firebase.svg',
   },
   {
     name: 'one',
-    path: 'gear/firebase.svg',
+    path: 'gear/sass.png',
   },
   {
     name: 'two',

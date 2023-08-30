@@ -56,6 +56,12 @@
       .element:hover + span {
         width: 100px;
         border-right: 40px solid #fff;
+        @media screen and (max-width: 550px) {
+          width: 60px;
+        }
+        @media screen and (max-width: 400px) {
+          width: 40px;
+        }
       }
     }
   }

@@ -4,9 +4,7 @@ import {
   Inject,
   OnDestroy,
   OnInit,
-  Self,
   WritableSignal,
-  computed,
   effect,
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
@@ -20,8 +18,8 @@ import { interval, Subscription, takeWhile, timer } from 'rxjs';
 import { screensArray } from '@constants';
 import { GearComponent, NavBarComponent } from '@app/features';
 import { ScreensAnimation } from '@animations';
-import { GearService } from '@services';
-import { EventsService } from '@services';
+import { GearService, EventsService } from '@services';
+import { TouchScrollerDirective } from '@directives';
 
 @Component({
   selector: 'app-main-page',
@@ -34,6 +32,7 @@ import { EventsService } from '@services';
     FourthScreenComponent,
     GearComponent,
     NavBarComponent,
+    TouchScrollerDirective,
   ],
   animations: [ScreensAnimation],
   templateUrl: './main.component.html',
@@ -86,6 +85,7 @@ export class MainComponent implements OnDestroy {
   ): void {
     if (!this.delay && !this.aboutEntered) {
       this.screenCounter(event);
+      console.log(event);
     }
   }
 

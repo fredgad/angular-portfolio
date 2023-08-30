@@ -1,10 +1,10 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, HostListener, Input, inject } from '@angular/core';
 import { CommonModule, KeyValue } from '@angular/common';
 import {
   CubePositionI,
   GenericKeyStringObject,
 } from '../entities/cube.interfaces';
-import { Observable, takeWhile, timer } from 'rxjs';
+import { Observable, take, takeWhile, timer } from 'rxjs';
 import { CubeFacade } from '../store/cube.facade';
 import { EdgeCubeComponent } from './edge-cube/edge-cube.component';
 import { StoreModule } from '@ngrx/store';
@@ -23,11 +23,17 @@ import { CubeInitialPositions } from '../entities/cube.constants';
   styleUrls: ['./cube-page.component.scss'],
 })
 export class CubePageComponent {
+  @Input() set currentPage(value: number) {
+    this.cubeSwiper(value);
+  }
+
   private cubeFacade = inject(CubeFacade);
 
   public isMouseDown = false;
   public startX = 0;
   public startY = 0;
+  public straight = true;
+  public cubeExploded = false;
 
   private currentKey = '';
   private currentValues: CubePositionI = {
@@ -45,32 +51,56 @@ export class CubePageComponent {
 
   public ngOnInit(): void {
     this.cubePositions$.subscribe((x) => {
-      console.log(x, 'CubePosition');
+      // console.log(x, 'CubePosition');
+      this.straight = x['t_l_F'].pos_X === 0;
     });
-    timer(1000, 3000).subscribe(() => {
-      this.cubeKeys.forEach((key) => {
-        let speed1 = Math.random() * 360;
-        let speed2 = Math.random() * 360;
-        let speed3 = Math.random() * 360;
-        if (this.cubeStrikt === true) {
-          speed1 = 0;
-          speed2 = 0;
-          speed3 = 0;
-        }
+  }
 
-        const changeTopPositions = {
-          key: key,
-          values: {
-            pos_X: speed1,
-            pos_Y: speed2,
-            pos_Z: speed3,
-          },
-        };
+  public cubeSwiper(screen: number): void {
+    if (screen === 2) {
+      this.cubeExploded = false;
+      timer(0)
+        .pipe(take(1))
+        .subscribe(() => {
+          this.stopCube();
+        });
+    }
+    if (!this.cubeExploded && screen !== 2) {
+      this.cubeExploded = true;
 
-        this.cubeFacade.setAddCubePositions(changeTopPositions);
-      });
-      this.cubeStrikt = !this.cubeStrikt;
+      timer(450)
+        .pipe(take(1))
+        .subscribe(() => {
+          this.explodeCube();
+        });
+    }
+    console.log(screen, '!current!');
+  }
+
+  public explodeCube() {
+    this.cubeKeys.forEach((key) => {
+      const speed1 = Math.random() * 360;
+      const speed2 = Math.random() * 360;
+      const speed3 = Math.random() * 360;
+      // if (this.cubeStrikt === true) {
+      //   speed1 = 0;
+      //   speed2 = 0;
+      //   speed3 = 0;
+      // }
+
+      const changeTopPositions = {
+        key: key,
+        values: {
+          pos_X: speed1,
+          pos_Y: speed2,
+          pos_Z: speed3,
+        },
+      };
+
+      this.cubeFacade.setAddCubePositions(changeTopPositions);
     });
+
+    // this.cubeStrikt = !this.cubeStrikt;
   }
 
   public stopCube() {
@@ -98,9 +128,9 @@ export class CubePageComponent {
     this.currentValues = value;
     let tZdirection = 0;
     if (event.deltaY < 0) {
-      tZdirection += 90;
+      tZdirection += 0;
     } else {
-      tZdirection -= 90;
+      tZdirection -= 0;
     }
 
     this.cubeFacade.setAddCubePositions({

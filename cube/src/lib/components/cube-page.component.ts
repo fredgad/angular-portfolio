@@ -74,7 +74,6 @@ export class CubePageComponent {
           this.explodeCube();
         });
     }
-    console.log(screen, '!current!');
   }
 
   public explodeCube() {

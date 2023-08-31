@@ -1,7 +1,7 @@
-<div class="tabs">
+<div class="tabs" *ngIf="tabsPositions$ | async as tabsPositions">
   <div class="about-me" [ngStyle]="{ 'transform': tabsPositions[0] }">
       <h2 data-r="Обо мне" data-e="About me" class="L">About me</h2>
-      <div (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)" class="about-me__cont">
+      <div (touchstart)="touchEvent()" (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)" class="about-me__cont">
           <div class="frame">
               <div>
                   <div>
@@ -37,7 +37,7 @@
 
   <div class="skills" [ngStyle]="{ 'transform': tabsPositions[1] }">
       <h2 data-r="Навыки" data-e="Skills" class="L">Skills</h2>
-      <div [class.lineOff]="currentTab$i() !== 1" (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)" class="skills__cont">
+      <div [class.lineOff]="currentTab$i() !== 1" (touchstart)="touchEvent()" (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)" class="skills__cont">
 
             <div class="skills__cont_html">
                 <p>HTML5</p> 
@@ -96,7 +96,7 @@
 
   <div class="experience" [ngStyle]="{ 'transform': tabsPositions[2] }">
       <h2 data-r="Опыт" data-e="Experience" class="L">Experience</h2>
-      <div (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)" class="experience__cont">
+      <div (touchstart)="touchEvent()" (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)" class="experience__cont">
           <p class="L" 
           data-r="Работы представленные в портфолио - только часть того, что я делал для практики." 
           data-e="The work that is presented in my portfolio is only the third part of what I did myself for practice.">
@@ -120,7 +120,7 @@
 
   <div class="contacts" [ngStyle]="{ 'transform': tabsPositions[3] }">
       <h2>Contacts</h2>
-      <div (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)">
+      <div (touchstart)="touchEvent()" (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)">
         <a href="tel:+79777872997">+7(707)-329-65-64 (WA)</a>
         <a href="mailto: fred_gad@mail.ru">fred_gad@mail.ru</a>
       </div>

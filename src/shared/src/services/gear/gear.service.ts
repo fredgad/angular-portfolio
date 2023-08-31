@@ -24,6 +24,11 @@ export class GearService {
   );
 
   public currentScreen$i: WritableSignal<number> = signal(0);
+  public isScreenDelay$i: WritableSignal<boolean> = signal(false);
+
+  public setScreenDelay(value: boolean): void {
+    this.isScreenDelay$i.set(value);
+  }
 
   public rewriteSecondGearPositions(top: string, left: string): void {
     this.initialGearPositions$.value[1] = { top, left };

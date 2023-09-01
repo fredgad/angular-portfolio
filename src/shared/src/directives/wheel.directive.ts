@@ -56,7 +56,6 @@ export class WheelDirective implements OnDestroy {
   ): void {
     if (!this.isScreenDelay$i() && !this.isTabEntered$i()) {
       this.screenCounter(event);
-      console.log(event);
     }
   }
 

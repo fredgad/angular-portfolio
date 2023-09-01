@@ -13,19 +13,6 @@ import { CubeColors } from '../../entities/cube.constants';
 })
 export class EdgeCubeComponent implements OnInit {
   @Input() public classInput = '';
-  // @Input() public position: CubePositionI = {
-  //   botLayer: {
-  //     pos_X: 0,
-  //     pos_Y: 0,
-  //     pos_Z: 0,
-  //   },
-  //   topLayer: {
-  //     posT_X: 0,
-  //     posT_Y: 0,
-  //     posT_Z: 0,
-  //   },
-  //   axes: [],
-  // };
 
   public cubeColors: CubeColorsI = {
     top: '',
@@ -38,7 +25,6 @@ export class EdgeCubeComponent implements OnInit {
 
   public ngOnInit(): void {
     this.cubeColors = CubeColors[this.classInput];
-    // console.log(this.cubeColors, this.classInput);
   }
 
   public trackByFn(_: number, item: { key: string; value: string }): string {

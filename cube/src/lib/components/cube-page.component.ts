@@ -1,28 +1,22 @@
-import { Component, HostListener, Input, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule, KeyValue } from '@angular/common';
 import {
   CubePositionI,
   GenericKeyStringObject,
 } from '../entities/cube.interfaces';
-import { Observable, take, takeWhile, timer } from 'rxjs';
+import { Observable, take, timer } from 'rxjs';
 import { CubeFacade } from '../store/cube.facade';
 import { EdgeCubeComponent } from './edge-cube/edge-cube.component';
-import { StoreModule } from '@ngrx/store';
-import { reducerCube } from '../store/cube.reducer';
 import { CubeInitialPositions } from '../entities/cube.constants';
 
 @Component({
   selector: 'cube-page',
   standalone: true,
-  imports: [
-    CommonModule,
-    EdgeCubeComponent,
-    // StoreModule.forRoot({ Cube: reducerCube }),
-  ],
+  imports: [CommonModule, EdgeCubeComponent],
   templateUrl: './cube-page.component.html',
   styleUrls: ['./cube-page.component.scss'],
 })
-export class CubePageComponent {
+export class CubePageComponent implements OnInit {
   @Input() set currentPage(value: number) {
     this.cubeSwiper(value);
   }
@@ -104,7 +98,6 @@ export class CubePageComponent {
 
   public stopCube() {
     this.cubeStrikt = !this.cubeStrikt;
-    console.log('sad');
     this.cubeKeys.forEach((key) => {
       const changeTopPositions = {
         key: key,
@@ -146,7 +139,6 @@ export class CubePageComponent {
     event: MouseEvent,
     { key, value }: KeyValue<string, CubePositionI>
   ): void {
-    console.log('mouse Down');
     this.isMouseDown = true;
     this.startX = event.clientX;
     this.startY = event.clientY;
@@ -167,18 +159,14 @@ export class CubePageComponent {
     }
     if (Math.abs(offsetX) > Math.abs(offsetY)) {
       if (offsetX > 0) {
-        console.log('Right');
         Ydirection += 90;
       } else {
-        console.log('Left');
         Ydirection -= 90;
       }
     } else {
       if (offsetY > 0) {
-        console.log('Down');
         Xdirection -= 90;
       } else {
-        console.log('Up');
         Xdirection += 90;
       }
     }
@@ -186,11 +174,9 @@ export class CubePageComponent {
     const changeTopPositions = {
       key: this.currentKey,
       values: {
-        topLayer: {
-          posT_X: this.currentValues.pos_X + Xdirection,
-          posT_Y: this.currentValues.pos_Y + Ydirection,
-          posT_Z: this.currentValues.pos_Z,
-        },
+        pos_X: this.currentValues.pos_X + Xdirection,
+        pos_Y: this.currentValues.pos_Y + Ydirection,
+        pos_Z: this.currentValues.pos_Z,
       },
     };
 
@@ -201,7 +187,7 @@ export class CubePageComponent {
     if (!this.isMouseDown) {
       return;
     }
-    console.log('MouseMove');
+    // console.log(event, 'MouseMove');
   }
 
   public trackByFn(_: number, item: KeyValue<string, any>): string {

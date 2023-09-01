@@ -11,6 +11,7 @@ import {
   CubePositionI,
   CubePositionsI,
   GenericKeyStringObject,
+  PropsCubePositionI,
 } from '../entities/cube.interfaces';
 import { Observable } from 'rxjs';
 
@@ -27,8 +28,7 @@ export class CubeFacade {
 
   constructor(private store$: Store<AppWithCubeState>) {}
 
-  public setAddCubePositions(props: any): void {
-    // console.log(props, 'props setAddCubePositions');
+  public setAddCubePositions(props: PropsCubePositionI): void {
     this.store$.dispatch(CubeActions.addCubePositions({ props }));
   }
 }

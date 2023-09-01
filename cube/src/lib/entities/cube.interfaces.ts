@@ -12,6 +12,10 @@ export interface CubePositionI {
   pos_Z: number;
 }
 
+export interface PropsCubePositionI {
+  key: string;
+  values: CubePositionI;
+}
 export interface CubeColorsI {
   top: string;
   left: string;

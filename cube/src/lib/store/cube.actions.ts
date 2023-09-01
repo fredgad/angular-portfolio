@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
-// import { ErrorList } from '@interfaces';
+import { PropsCubePositionI } from '../entities/cube.interfaces';
 
 export const addCubePositions = createAction(
   '[Cube] Add Cube Position',
-  props<{ props: any }>()
+  props<{ props: PropsCubePositionI }>()
 );

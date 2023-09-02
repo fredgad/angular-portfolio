@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabsComponent } from './components/tabs/tabs.component';
-import { GearService, TabsService } from '@services';
+import { GearService, LangService, TabsService } from '@services';
 
 @Component({
   selector: 'app-second-screen',
@@ -13,9 +13,12 @@ import { GearService, TabsService } from '@services';
 export class SecondScreenComponent implements AfterViewInit {
   @ViewChild('aboutMeRef', { static: true }) aboutMeRef!: ElementRef;
 
+  public isEngLang$i = this.langService.isEngLang$i;
+
   constructor(
     private gearService: GearService,
-    private tabsService: TabsService
+    private tabsService: TabsService,
+    private langService: LangService
   ) {}
 
   public ngAfterViewInit(): void {

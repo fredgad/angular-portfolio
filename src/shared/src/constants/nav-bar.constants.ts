@@ -1,6 +1,7 @@
 export interface BarMenuI {
   name: string;
   link: string;
+  target?: string;
   state: boolean;
 }
 
@@ -21,8 +22,9 @@ export const BarMenu: BarMenuI[] = [
     state: false,
   },
   {
-    name: 'Onpoin test',
-    link: 'Onpoin test',
+    name: 'Pong',
+    link: 'pong',
+    target: '_blank',
     state: false,
   },
   {

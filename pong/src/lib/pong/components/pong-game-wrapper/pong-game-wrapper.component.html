@@ -1,0 +1,22 @@
+<div class="wrapper" (touchstart)="touchDown($event)" (touchend)="mouseUp()" (mousedown)="mouseDown($event)" (mouseup)="mouseUp()">
+  <pong-game *ngIf="fieldSizes$ | async as fieldSizes"
+    [fieldWidth]="fieldSizes.width"
+    [fieldHeight]="fieldSizes.height"
+    [currentPos]="currentPos"
+    [ballSize]="ballSize"
+    [wallWidth]="wallWidth"
+    [wallBotPos]="wallBotPos"
+    [wallTopPos]="wallTopPos"
+  ></pong-game>
+
+  <div class="table" [style.width]="fieldWidth + 'px'">
+    <span>
+      <p class="table__pause" (click)="togglePause()">{{pause ? '&#9658;' : '&#10074; &#10074;'}}</p>
+      <p class="table__repeat" (click)="restart()">&#8634;</p>
+    </span>
+    <span>
+      <p class="table__blue">{{blueGoals}}</p>
+      <p class="table__red">{{redGoals}}</p>
+    </span>
+  </div>
+</div>

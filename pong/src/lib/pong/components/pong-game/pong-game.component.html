@@ -1,0 +1,15 @@
+<div class="field" [style]="{ 'width': fieldWidth + 'px', 'height': fieldHeight + 'px' }">
+  <div class="field__wall-top"
+    [style.width]="wallWidth + 'px'"
+    [style.transform]="'translateX(' + wallTopPos + 'px)'"
+  ></div>
+  <div class="field__wall-bot"
+    [style.width]="wallWidth + 'px'"
+    [style.transform]="'translateX(' + wallBotPos + 'px)'"
+  ></div>
+  <div class="field__ball"
+    [style.width]="ballSize + 'px'"
+    [style.height]="ballSize + 'px'"
+    [style.transform]="currentPos"
+   ></div>
+</div>

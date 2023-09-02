@@ -51,7 +51,7 @@ export class CubePageComponent implements OnInit {
   }
 
   public cubeSwiper(screen: number): void {
-    if (screen === 2) {
+    if (screen === 3) {
       this.cubeExploded = false;
       timer(0)
         .pipe(take(1))
@@ -59,7 +59,7 @@ export class CubePageComponent implements OnInit {
           this.stopCube();
         });
     }
-    if (!this.cubeExploded && screen !== 2) {
+    if (!this.cubeExploded && screen !== 3) {
       this.cubeExploded = true;
 
       timer(450)

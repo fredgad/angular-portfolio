@@ -5,7 +5,7 @@
 
   <div class="navbar" [@navBarTrigger]="isOpenNav ? navEnum.OPEN : navEnum.CLOSED">
     <div *ngFor="let barPoint of barMenu" class="navbar__line" [class.open]="barPoint.state">
-        <a (click)="toggleNav()" [routerLink]="barPoint.link">{{ barPoint.name }}</a>
+        <a (click)="toggleNav()" [target]="barPoint?.target" [routerLink]="barPoint.link">{{ barPoint.name }}</a>
     </div>
   </div>
 

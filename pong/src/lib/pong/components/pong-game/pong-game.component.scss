@@ -1,0 +1,32 @@
+.field {
+  position: relative;
+  width: 80vw;
+  height: 80vh;
+  // overflow: hidden;
+  border: 10px dashed grey;
+  border-right: 5px solid grey;
+  border-left: 5px solid grey;
+  box-sizing: content-box;
+
+  &__ball {
+    position: absolute;
+    background: silver;
+    border-radius: 50%;
+  }
+  &__wall-top, &__wall-bot {
+    position: absolute;
+    height: 10px;
+  }
+  &__wall-top {
+    top: -10px;
+    background: blue;
+  }
+  &__wall-bot {
+    bottom: -10px;
+    background: red;
+  }
+}
+
+b {
+  font-size: 105px;
+}

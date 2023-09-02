@@ -30,6 +30,10 @@ export const appRoutes: Route[] = [
       import('@angular-portfolio/rotate').then((m) => m.RotateComponent),
   },
   {
+    path: 'pong',
+    loadComponent: () => import('@app/pong').then((m) => m.PongComponent),
+  },
+  {
     path: '**',
     redirectTo: '',
     component: MainComponent,

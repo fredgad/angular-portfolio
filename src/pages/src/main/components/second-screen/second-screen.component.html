@@ -1,15 +1,23 @@
 <div class="second-screen">
   <div class="about">
-      <h2 data-r="О чём" data-e="About" class="L">About</h2>
+      <h2>{{ isEngLang$i() ? 'About me' : 'О чём' }}</h2>
       
       <div class="about__menu">
-          <div #aboutMeRef class="about__menu_about-me element" (mouseover)="onMouseOver($event, 0)">About me</div>
+          <div #aboutMeRef class="about__menu_about-me element" (mouseover)="onMouseOver($event, 0)">
+            {{ isEngLang$i() ? 'About me' : 'Обо мне' }}
+          </div>
           <span></span>
-          <div class="about__menu_skills element L" (mouseover)="onMouseOver($event, 1)">Skills</div>
+          <div class="about__menu_skills element L" (mouseover)="onMouseOver($event, 1)">
+            {{ isEngLang$i() ? 'Skills' : 'Навыки' }}
+          </div>
           <span></span>
-          <div class="about__menu_experience element L" (mouseover)="onMouseOver($event, 2)">Experience</div>
+          <div class="about__menu_experience element L" (mouseover)="onMouseOver($event, 2)">
+            {{ isEngLang$i() ? 'Experience' : 'Опыт' }}
+          </div>
           <span></span>
-          <div class="about__menu_contacts element L" (mouseover)="onMouseOver($event, 3)">Contacts</div>
+          <div class="about__menu_contacts element L" (mouseover)="onMouseOver($event, 3)">
+            {{ isEngLang$i() ? 'Contacts' : 'Контакты' }}
+          </div>
           <span></span>
       </div>
   </div>

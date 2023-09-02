@@ -1,0 +1,36 @@
+.field {
+  position: relative;
+  width: 80vw;
+  height: 80vh;
+  border: 10px dashed grey;
+  border-right: 5px solid grey;
+  border-left: 5px solid grey;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+.field__ball {
+  position: absolute;
+  background: silver;
+  border-radius: 50%;
+}
+
+.field__wall-top, .field__wall-bot {
+  position: absolute;
+  height: 10px;
+}
+
+.field__wall-top {
+  top: -10px;
+  background: blue;
+}
+
+.field__wall-bot {
+  bottom: -10px;
+  background: red;
+}
+
+b {
+  font-size: 105px;
+}
+/*# sourceMappingURL=pong-game.component.css.map */

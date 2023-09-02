@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TabsService } from '@services';
+import { LangService, TabsService } from '@services';
 import { BackgroundImageDirective } from '@directives';
 import { Observable, timer } from 'rxjs';
 
@@ -13,9 +13,11 @@ import { Observable, timer } from 'rxjs';
 })
 export class TabsComponent {
   public tabsService: TabsService = inject(TabsService);
+  public langService: LangService = inject(LangService);
 
   public tabsPositions$: Observable<string[]> = this.tabsService.tabsPositions$;
   public currentTab$i = this.tabsService.currentTab$i;
+  public isEngLang$i = this.langService.isEngLang$i;
 
   public mouseTabsEvent(value: boolean): void {
     this.tabsService.setEnteredTab(value);

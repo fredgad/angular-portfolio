@@ -9,6 +9,7 @@ import { timer } from 'rxjs';
 export class TouchScrollerDirective {
   private gearService: GearService = inject(GearService);
   private tabsService: TabsService = inject(TabsService);
+  private isTouchEnteredTab$i = this.tabsService.isTouchEnteredTab$i;
 
   private startX = 0;
   private startY = 0;
@@ -46,6 +47,8 @@ export class TouchScrollerDirective {
     const delatXAbs = Math.abs(this.deltaX);
     const delatYAbs = Math.abs(this.deltaY);
     const realDelta = delatXAbs > delatYAbs ? this.deltaX : this.deltaY;
+
+    if (delatXAbs < delatYAbs && this.isTouchEnteredTab$i()) return;
 
     if (realDelta !== 0) {
       this.gearService.setScreenDelay(true);

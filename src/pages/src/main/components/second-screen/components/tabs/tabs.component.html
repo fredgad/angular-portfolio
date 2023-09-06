@@ -1,7 +1,14 @@
 <div class="tabs" *ngIf="tabsPositions$ | async as tabsPositions">
   <div class="about-me" [ngStyle]="{ 'transform': tabsPositions[0] }">
       <h2>{{ isEngLang$i() ? 'About me' : 'Обо мне' }}</h2>
-      <div (touchstart)="touchEvent()" (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)" class="about-me__cont">
+      <div
+        (scroll)="onScroll($event)" 
+        (wheel)="onWheel($event)"
+        (touchstart)="touchStart()"
+        (touchend)="touchEnd()"
+        (touccansel)="touchEnd()"
+        (mouseenter)="mouseTabsEvent(true)"
+        (mouseleave)="mouseTabsEvent(false)" class="about-me__cont scrollable-element">
           <div class="frame">
               <div>
                   <div>
@@ -48,7 +55,7 @@
 
   <div class="skills" [ngStyle]="{ 'transform': tabsPositions[1] }">
       <h2>{{ isEngLang$i() ? 'Skills' : 'Навыки' }}</h2>
-      <div [class.lineOff]="currentTab$i() !== 1" (touchstart)="touchEvent()" (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)" class="skills__cont">
+      <div [class.lineOff]="currentTab$i() !== 1"  class="skills__cont">
 
             <div class="skills__cont_html">
                 <p>HTML5</p> 
@@ -107,7 +114,13 @@
 
   <div class="experience" [ngStyle]="{ 'transform': tabsPositions[2] }">
       <h2>{{ isEngLang$i() ? 'Experience' : 'Опыт' }}</h2>
-      <div (touchstart)="touchEvent()" (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)" class="experience__cont">
+      <div
+        (touchstart)="touchStart()"
+        (touchend)="touchEnd()"
+        (touccansel)="touchEnd()" 
+        (mouseenter)="mouseTabsEvent(true)" 
+        (mouseleave)="mouseTabsEvent(false)"
+        class="experience__cont">
           <p class="L" 
           data-r="Работы представленные в портфолио - только часть того, что я делал для практики." 
           data-e="The work that is presented in my portfolio is only the third part of what I did myself for practice.">
@@ -129,7 +142,7 @@
 
   <div class="contacts" [ngStyle]="{ 'transform': tabsPositions[3] }">
       <h2>{{ isEngLang$i() ? 'Contacts' : 'Контакты' }}</h2>
-      <div (touchstart)="touchEvent()" (mouseenter)="mouseTabsEvent(true)" (mouseleave)="mouseTabsEvent(false)">
+      <div>
         <a href="tel:+79777872997">+7(707)-329-65-64 (WA)</a>
         <a href="mailto: fred_gad@mail.ru">fred_gad@mail.ru</a>
       </div>

@@ -57,6 +57,6 @@ export const GearImages: GearImagesI[] = [
 export const GearPositions: GearPositionsI[] = [
   { top: 'calc(50vh - 5rem)', left: 'calc(50vw - 5rem)' },
   { top: 'calc(50vh - 5rem)', left: 'calc(50vw - 5rem)' },
-  { top: '50px', left: '90vw' },
-  { top: '50px', left: '90vw' },
+  { top: '30px', left: 'calc(100dvw - 55px)' },
+  { top: '30px', left: 'calc(100dvw - 55px)' },
 ];

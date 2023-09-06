@@ -9,7 +9,7 @@
 
 .tabs {
   position: relative;
-  width: 55vw;
+  width: 55dvw;
   perspective: 4000px;
   transform-origin: preserve-3d;
   overflow: hidden;
@@ -18,18 +18,18 @@
   > div {
     position: absolute;
     background: transparent;
-    width: 55vw;
-    height: 100vh;
+    width: 55dvw;
+    height: 100dvh;
     color: #932e96;
     transform-origin: 100% 100%;
     transition: 0.8s;
-    // background: rgba(0, 0, 0, 0.39);
 
     h2 {
-      height: 20vh;
+      height: 20dvh;
       display: flex;
       align-items: center;
-      padding-left: 2vw;
+      padding-left: 2dvw;
+      font-size: 18px;
     }
     p {
       font-size: 16px;
@@ -46,12 +46,11 @@
     .about-me__cont {
       display: grid;
       position: relative;
-      height: 60vh;
+      height: 60dvh;
       overflow-y: scroll;
       overflow-x: hidden;
 
       .frame {
-        // margin-top: 300px;
         transform-origin: 50% 50%;
         position: relative;
         margin-left: auto;
@@ -108,10 +107,26 @@
             }
           }
         }
+        @media screen and (max-width: 440px) {
+          height: 150px;
+          width: 150px;
+          * {
+            height: 150px;
+            width: 150px;
+          }
+          > div > div > div {
+            width: 200px;
+            height: 200px;
+            top: -25px;
+            left: -25px;
+          }
+        }
       }
 
       p {
-        padding: 40px 2vw 20px 2vw;
+        width: 100%;
+        padding: 40px 2dvw 20px 2dvw;
+        box-sizing: border-box;
       }
     }
     .about-me__cont:hover {
@@ -123,9 +138,8 @@
 
     .skills__cont {
       position: relative;
-      height: 60vh;
-      overflow-x: hidden;
-      overflow-y: scroll;
+      height: 60dvh;
+      overflow: hidden;
       transition: 0.2s;
       display: grid;
       align-items: center;
@@ -214,7 +228,7 @@
       p {
         min-width: 80px;
         position: relative;
-        left: 2vw;
+        left: 2dvw;
         background: #fff;
         z-index: 1;
         font-size: 12px;
@@ -231,7 +245,7 @@
     transform-origin: 0% 100%;
 
     .experience__cont {
-      height: 60vh;
+      height: 60dvh;
       overflow-y: scroll;
       display: grid;
       flex-direction: column;
@@ -240,8 +254,8 @@
 
       p {
         font-size: 17px;
-        padding-left: 2vw;
-        padding-right: 2vw;
+        padding-left: 2dvw;
+        padding-right: 2dvw;
         transition: 0.2s;
         margin: 0;
       }
@@ -269,15 +283,15 @@
     transform-origin: 0% 0%;
 
     div {
-      height: 60vh;
+      height: 60dvh;
       display: flex;
       justify-content: center;
       flex-direction: column;
 
       a {
         text-decoration: none;
-        padding: 0vh 0 0vh 2vw;
-        font-size: 20px;
+        padding: 0dvh 0 0dvh 2dvw;
+        font-size: 18px;
         font-weight: 900;
         color: #222;
         margin-bottom: 20px;
@@ -319,10 +333,10 @@
     transform: skewY(1deg) translateY(0);
   }
   10% {
-    transform: skewY(0) translateY(5vh);
+    transform: skewY(0) translateY(5dvh);
   }
   20% {
-    transform: skewY(-2.5deg) translateY(3vh);
+    transform: skewY(-2.5deg) translateY(3dvh);
   }
   30% {
     transform: skewY(-1.5deg) translateY(5);
@@ -331,22 +345,22 @@
     transform: skewY(0) translateY(0);
   }
   50% {
-    transform: skewY(-2.5deg) translateY(5vh);
+    transform: skewY(-2.5deg) translateY(5dvh);
   }
   60% {
-    transform: skewY(0) translateY(3vh);
+    transform: skewY(0) translateY(3dvh);
   }
   70% {
-    transform: skewY(7.5deg) translateY(7vh);
+    transform: skewY(7.5deg) translateY(7dvh);
   }
   80% {
-    transform: skewY(-7.5deg) translateY(10vh);
+    transform: skewY(-7.5deg) translateY(10dvh);
   }
   90% {
-    transform: skewY(-5deg) translateY(15vh);
+    transform: skewY(-5deg) translateY(15dvh);
   }
   100% {
-    transform: skewY(-2.5deg) translateY(10vh);
+    transform: skewY(-2.5deg) translateY(10dvh);
   }
 }
 @keyframes page1box2 {
@@ -354,34 +368,34 @@
     transform: skewY(0deg) translateY(0);
   }
   10% {
-    transform: skewY(-2.5deg) translateY(-5vh);
+    transform: skewY(-2.5deg) translateY(-5dvh);
   }
   20% {
-    transform: skewY(-5deg) translateY(-10vh);
+    transform: skewY(-5deg) translateY(-10dvh);
   }
   30% {
-    transform: skewY(-2.5deg) translateY(-5vh);
+    transform: skewY(-2.5deg) translateY(-5dvh);
   }
   40% {
     transform: skewY(0deg) translateY(0);
   }
   50% {
-    transform: skewY(2.5deg) translateY(5vh);
+    transform: skewY(2.5deg) translateY(5dvh);
   }
   60% {
-    transform: skewY(5deg) translateY(13vh);
+    transform: skewY(5deg) translateY(13dvh);
   }
   70% {
-    transform: skewY(7.5deg) translateY(19vh);
+    transform: skewY(7.5deg) translateY(19dvh);
   }
   75% {
-    transform: skewY(-3.5deg) translateY(15vh);
+    transform: skewY(-3.5deg) translateY(15dvh);
   }
   90% {
-    transform: skewY(-1.5deg) translateY(19vh);
+    transform: skewY(-1.5deg) translateY(19dvh);
   }
   100% {
-    transform: skewY(-2.5deg) translateY(8vh);
+    transform: skewY(-2.5deg) translateY(8dvh);
   }
 }
 @keyframes page2box1 {
@@ -389,10 +403,10 @@
     transform: skewY(-1deg) translateY(0);
   }
   10% {
-    transform: skewY(0) translateY(5vh);
+    transform: skewY(0) translateY(5dvh);
   }
   20% {
-    transform: skewY(2.5deg) translateY(3vh);
+    transform: skewY(2.5deg) translateY(3dvh);
   }
   30% {
     transform: skewY(1.5deg) translateY(5);
@@ -401,22 +415,22 @@
     transform: skewY(0) translateY(0);
   }
   50% {
-    transform: skewY(2.5deg) translateY(5vh);
+    transform: skewY(2.5deg) translateY(5dvh);
   }
   60% {
-    transform: skewY(0) translateY(3vh);
+    transform: skewY(0) translateY(3dvh);
   }
   70% {
-    transform: skewY(-7.5deg) translateY(7vh);
+    transform: skewY(-7.5deg) translateY(7dvh);
   }
   80% {
-    transform: skewY(7.5deg) translateY(10vh);
+    transform: skewY(7.5deg) translateY(10dvh);
   }
   90% {
-    transform: skewY(5deg) translateY(15vh);
+    transform: skewY(5deg) translateY(15dvh);
   }
   100% {
-    transform: skewY(2.5deg) translateY(10vh);
+    transform: skewY(2.5deg) translateY(10dvh);
   }
 }
 @keyframes page2box2 {
@@ -424,33 +438,33 @@
     transform: skewY(0deg) translateY(0);
   }
   10% {
-    transform: skewY(2.5deg) translateY(-5vh);
+    transform: skewY(2.5deg) translateY(-5dvh);
   }
   20% {
-    transform: skewY(5deg) translateY(-10vh);
+    transform: skewY(5deg) translateY(-10dvh);
   }
   30% {
-    transform: skewY(2.5deg) translateY(-5vh);
+    transform: skewY(2.5deg) translateY(-5dvh);
   }
   40% {
     transform: skewY(0deg) translateY(0);
   }
   50% {
-    transform: skewY(-2.5deg) translateY(5vh);
+    transform: skewY(-2.5deg) translateY(5dvh);
   }
   60% {
-    transform: skewY(-5deg) translateY(13vh);
+    transform: skewY(-5deg) translateY(13dvh);
   }
   70% {
-    transform: skewY(-7.5deg) translateY(19vh);
+    transform: skewY(-7.5deg) translateY(19dvh);
   }
   75% {
-    transform: skewY(3.5deg) translateY(15vh);
+    transform: skewY(3.5deg) translateY(15dvh);
   }
   90% {
-    transform: skewY(1.5deg) translateY(19vh);
+    transform: skewY(1.5deg) translateY(19dvh);
   }
   100% {
-    transform: skewY(2.5deg) translateY(8vh);
+    transform: skewY(2.5deg) translateY(8dvh);
   }
 }

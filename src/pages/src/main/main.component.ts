@@ -17,7 +17,12 @@ import {
 } from './components';
 import { interval, Subscription, takeWhile, timer } from 'rxjs';
 import { screensArray } from '@constants';
-import { GearComponent, NavBarComponent, LangComponent } from '@app/features';
+import {
+  GearComponent,
+  NavBarComponent,
+  LangComponent,
+  MusicComponent,
+} from '@app/features';
 import { ScreensAnimation } from '@animations';
 import { GearService, EventsService, TabsService } from '@services';
 import { TouchScrollerDirective, WheelDirective } from '@directives';
@@ -33,6 +38,7 @@ import { TouchScrollerDirective, WheelDirective } from '@directives';
     FourthScreenComponent,
     GearComponent,
     LangComponent,
+    MusicComponent,
     NavBarComponent,
     TouchScrollerDirective,
     WheelDirective,

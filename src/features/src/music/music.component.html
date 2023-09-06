@@ -1,0 +1,10 @@
+<audio id="audioPlayer">
+  <source [src]="audioSource" type="audio/mpeg">
+</audio>
+
+<div class="audio_wrapper" [class.open]="isPlaying$i() || isOpen" [class.play]="!isPlaying$i()">
+  <div (click)="togglePlayback()" class="audio">
+    <div class="first"></div>
+    <div class="second"></div>
+  </div>
+</div>

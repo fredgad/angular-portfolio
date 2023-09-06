@@ -8,6 +8,15 @@ export interface GearImagesI {
   path: string;
 }
 
+export interface BarMenuI {
+  name: string;
+  link: string;
+  isRoute?: boolean;
+  target?: string;
+  download?: string;
+  state: boolean;
+}
+
 export interface TabsPositionsI {
   [key: number]: string[];
 }

@@ -1,0 +1,78 @@
+.audio_wrapper {
+  position: fixed;
+  bottom: 30px;
+  right: -130px;
+  z-index: 9999;
+  height: 16px;
+  width: 100px;
+  background: #222;
+  transition: right 1s cubic-bezier(0, -0.24, 0.69, -0.85), border 0.3s linear;
+  transition-delay: 1s;
+
+  &.open {
+    right: -20px;
+    transition: 1s cubic-bezier(0.31, 0.74, 0.75, 1.74);
+    transition-delay: 1s;
+  }
+
+  &.play {
+    .audio {
+      animation: none;
+
+      .first {
+        border: 10px solid transparent;
+        border-left: 20px solid #d3e5f1;
+        height: 0px;
+      }
+      .second {
+        height: 0;
+        margin: 20px 0px 0px 24px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .audio {
+    background: #222;
+    border: 2px solid #932e96;
+    outline-offset: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: -15px;
+    margin-left: -3px;
+    animation: musicFlow 1s infinite;
+    cursor: pointer;
+
+    .first {
+      transition: height 0.3s linear, border 0.3s linear;
+      position: absolute;
+      background: transparent;
+      border: 0px solid transparent;
+      border-left: 5px solid #d3e5f1;
+      width: 0;
+      height: 20px;
+      margin: 10px 0px 0px 12px;
+    }
+    .second {
+      transition: 0.5s;
+      position: absolute;
+      background: #d3e5f1;
+      border-radius: 0;
+      width: 5px;
+      height: 20px;
+      margin: 10px 0px 0px 24px;
+    }
+  }
+}
+
+@keyframes musicFlow {
+  from {
+    outline: 1px solid #700066;
+    outline-offset: 0px;
+  }
+  to {
+    outline: 1px solid transparent;
+    outline-offset: 15px;
+  }
+}

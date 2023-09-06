@@ -1,55 +1,63 @@
-export interface BarMenuI {
-  name: string;
-  link: string;
-  target?: string;
-  state: boolean;
-}
+import { BarMenuI } from '../interfaces';
 
 export const BarMenu: BarMenuI[] = [
   {
     name: 'Main',
     link: 'Main',
+    isRoute: true,
     state: false,
   },
   {
-    name: 'Cube',
-    link: 'cube',
+    name: 'React Regalo',
+    link: 'https://regalo-margarita.web.app/',
+    isRoute: false,
+    target: '_blank',
     state: false,
   },
   {
-    name: 'Second',
-    link: 'second',
+    name: 'Vue Charts',
+    link: 'https://char-ts.web.app/',
+    isRoute: false,
+    target: '_blank',
     state: false,
   },
   {
-    name: 'Pong',
+    name: 'NgRx Pong',
     link: 'pong',
     target: '_blank',
     state: false,
   },
   {
-    name: 'Photocut',
-    link: 'Photocut',
+    name: '(fix here)',
+    link: '',
     state: false,
   },
   {
-    name: 'Bubbles',
-    link: 'Bubbles',
+    name: 'Fire Congrats',
+    link: 'https://fire-cong.web.app/',
+    isRoute: false,
+    target: '_blank',
     state: false,
   },
   {
-    name: 'Some diagram',
-    link: 'Some diagram',
+    name: 'Birthday',
+    link: 'https://birth-cong.web.app/',
+    isRoute: false,
+    target: '_blank',
     state: false,
   },
   {
-    name: 'Ida-project tes',
-    link: 'Ida-project tes',
+    name: 'Experiment',
+    link: 'https://candy-poll.web.app/',
+    isRoute: false,
+    target: '_blank',
     state: false,
   },
   {
-    name: 'Timer',
-    link: 'Timer',
+    name: 'Download resume',
+    link: 'assets/resume/resume.pdf',
+    download: 'resume.pdf',
+    target: '_blank',
     state: false,
   },
 ];

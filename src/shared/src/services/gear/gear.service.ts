@@ -1,11 +1,5 @@
-import {
-  HostListener,
-  Injectable,
-  Signal,
-  WritableSignal,
-  signal,
-} from '@angular/core';
-import { BehaviorSubject, Observable, of, shareReplay, timer } from 'rxjs';
+import { Injectable, WritableSignal, signal } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import {
   MAX_GEAR_SCREEN,
   MIN_GEAR_SCREEN,

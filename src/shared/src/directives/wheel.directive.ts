@@ -40,10 +40,10 @@ export class WheelDirective implements OnDestroy {
           this.newFontSize = 1.5;
           break;
         case 2:
-          this.newFontSize = 3;
+          this.newFontSize = 2;
           break;
         case 3:
-          this.newFontSize = 3;
+          this.newFontSize = 2;
           break;
       }
 
@@ -54,7 +54,11 @@ export class WheelDirective implements OnDestroy {
   @HostListener('window:wheel', ['$event']) onWindowScroll(
     event: WheelEvent
   ): void {
-    if (!this.isScreenDelay$i() && !this.isTabEntered$i()) {
+    if (
+      (this.tabsService.isAllowedTop$i() ||
+        this.tabsService.isAllowedBot$i()) &&
+      !this.isScreenDelay$i()
+    ) {
       this.screenCounter(event);
     }
   }
@@ -62,9 +66,17 @@ export class WheelDirective implements OnDestroy {
   private screenCounter(event: WheelEvent): void {
     this.gearService.setScreenDelay(true);
 
-    if (event.deltaY > 0) {
+    if (
+      event.deltaY > 0 &&
+      (this.tabsService.isAllowedBot$i() || this.currentScreen$i() !== 1)
+    ) {
+      console.log('Bot');
       this.gearService.nextScreen();
-    } else {
+    } else if (
+      event.deltaY < 0 &&
+      (this.tabsService.isAllowedTop$i() || this.currentScreen$i() !== 1)
+    ) {
+      console.log('Top');
       this.gearService.prevScreen();
     }
 

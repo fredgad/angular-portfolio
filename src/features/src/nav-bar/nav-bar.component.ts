@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BarMenu, BarMenuI } from '@constants';
+import { BarMenu } from '@constants';
+import { BarMenuI } from '@interfaces';
 import { timer } from 'rxjs';
 import { NavBarAnimation, NavBarAnimationStateEnum } from '@animations';
 import { RouterModule } from '@angular/router';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-nav-bar',

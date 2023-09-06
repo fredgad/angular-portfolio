@@ -1,5 +1,5 @@
 export const AboutMeText = {
-  eng: ` I'm 30 years old.
+  eng: `I'm 30 years old.
   An optimist with a technical outlook on the world. I approach challenges 
   with a calm and patient demeanor, coupled with ambitious goals.
   Like to make various kinds of interactive animations and games.

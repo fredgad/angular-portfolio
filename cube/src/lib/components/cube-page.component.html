@@ -1,4 +1,4 @@
-<div class="container"  (mouseup)="onMouseUp($event)" (mousemove)="onMouseMove($event)">
+<div class="container">
   <div class="cube c_c_M">
     <div *ngFor="let position of cubePositions$ | async | keyvalue; trackBy: trackByFn"
       class="layer_Top" [class]="position.key">
@@ -6,14 +6,10 @@
           [class]="position.key"
           [class.straight]="straight"
           [classInput]="position.key"
-          
-          [ngStyle]="{ 'transform': 'rotateX(' + position.value.pos_X + 'deg) rotateY(' + position.value.pos_Y + 'deg) rotateZ(' + position.value.pos_Z + 'deg)' }"
-          (wheel)="onWheelCube($event, position)"
-          (mousedown)="onMouseDown($event, position)">
+          [ngStyle]="{ 'transform': 'rotateX(' + position.value.pos_X + 'deg) rotateY(' + position.value.pos_Y + 'deg) rotateZ(' + position.value.pos_Z + 'deg)' }">
         </cube-edge>
     </div>
   </div>
-  <!-- <button class="explode_button">Boom!</button> -->
 </div>
 
 <!-- (click)="stopCube()" -->

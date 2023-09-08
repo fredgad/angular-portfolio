@@ -64,16 +64,6 @@
       perspective: 100000px;
       transition: 0.4s;
 
-      // cursor: grab;
-      // .front,
-      // .left,
-      // .right,
-      // .top,
-      // .bot,
-      // .back {
-      //   background-color: #222 !important;
-      // }
-
       &.straight {
         transition: 3s;
         height: 60vmin;
@@ -375,30 +365,4 @@
       }
     }
   }
-}
-
-.green {
-  background: #04ff792e;
-  // border: 1px solid green;
-}
-.blue {
-  background: #2104ff2e;
-  // border: 1px solid blue;
-}
-.yellow {
-  background: #e6ff042e;
-  // border: 1px solid yellow;
-}
-
-.red {
-  background: #ff04082e;
-  // border: 1px solid red;
-}
-.white {
-  background: #ffffff2e;
-  // border: 1px solid white;
-}
-.orange {
-  background: #ffae002e;
-  // border: 1px solid orange;
 }

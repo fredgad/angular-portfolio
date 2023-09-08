@@ -1,10 +1,10 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule, KeyValue } from '@angular/common';
 import {
   CubePositionI,
   GenericKeyStringObject,
 } from '../entities/cube.interfaces';
-import { Observable, take, timer } from 'rxjs';
+import { Observable, Subscription, take, timer } from 'rxjs';
 import { CubeFacade } from '../store/cube.facade';
 import { EdgeCubeComponent } from './edge-cube/edge-cube.component';
 import { CubeInitialPositions } from '../entities/cube.constants';
@@ -16,12 +16,14 @@ import { CubeInitialPositions } from '../entities/cube.constants';
   templateUrl: './cube-page.component.html',
   styleUrls: ['./cube-page.component.scss'],
 })
-export class CubePageComponent implements OnInit {
+export class CubePageComponent implements OnInit, OnDestroy {
   @Input() set currentPage(value: number) {
     this.cubeSwiper(value);
   }
 
-  private cubeFacade = inject(CubeFacade);
+  private cubeFacade: CubeFacade = inject(CubeFacade);
+
+  private subscription: Subscription = new Subscription();
 
   public isMouseDown = false;
   public startX = 0;
@@ -44,10 +46,11 @@ export class CubePageComponent implements OnInit {
     this.cubeFacade.cubePositions$;
 
   public ngOnInit(): void {
-    this.cubePositions$.subscribe((x) => {
-      // console.log(x, 'CubePosition');
-      this.straight = x['t_l_F'].pos_X === 0;
-    });
+    this.subscription.add(
+      this.cubePositions$.subscribe((x) => {
+        this.straight = x['t_l_F'].pos_X === 0;
+      })
+    );
   }
 
   public cubeSwiper(screen: number): void {
@@ -75,11 +78,6 @@ export class CubePageComponent implements OnInit {
       const speed1 = Math.random() * 360;
       const speed2 = Math.random() * 360;
       const speed3 = Math.random() * 360;
-      // if (this.cubeStrikt === true) {
-      //   speed1 = 0;
-      //   speed2 = 0;
-      //   speed3 = 0;
-      // }
 
       const changeTopPositions = {
         key: key,
@@ -92,8 +90,6 @@ export class CubePageComponent implements OnInit {
 
       this.cubeFacade.setAddCubePositions(changeTopPositions);
     });
-
-    // this.cubeStrikt = !this.cubeStrikt;
   }
 
   public stopCube() {
@@ -183,14 +179,11 @@ export class CubePageComponent implements OnInit {
     this.cubeFacade.setAddCubePositions(changeTopPositions);
   }
 
-  public onMouseMove(event: MouseEvent): void {
-    if (!this.isMouseDown) {
-      return;
-    }
-    // console.log(event, 'MouseMove');
-  }
-
   public trackByFn(_: number, item: KeyValue<string, any>): string {
     return item.key;
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

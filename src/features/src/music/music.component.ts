@@ -32,7 +32,7 @@ export class MusicComponent implements AfterViewInit {
     effect(() => {
       switch (this.currentScreen$i()) {
         case 0:
-          this.isOpen = true;
+          this.isOpen = false;
           break;
         case 1:
           this.isOpen = false;

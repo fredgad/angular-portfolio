@@ -1,21 +1,11 @@
-import {
-  Component,
-  HostListener,
-  Inject,
-  OnDestroy,
-  OnInit,
-  WritableSignal,
-  effect,
-  inject,
-} from '@angular/core';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { Component, OnInit, WritableSignal, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   FirstScreenComponent,
   SecondScreenComponent,
   ThirdScreenComponent,
   FourthScreenComponent,
 } from './components';
-import { interval, Subscription, takeWhile, timer } from 'rxjs';
 import { screensArray } from '@constants';
 import {
   GearComponent,
@@ -24,8 +14,9 @@ import {
   MusicComponent,
 } from '@app/features';
 import { ScreensAnimation } from '@animations';
-import { GearService, EventsService, TabsService } from '@services';
+import { GearService, EventsService, LangService } from '@services';
 import { TouchScrollerDirective, WheelDirective } from '@directives';
+import { LangEnum } from '@interfaces';
 
 @Component({
   selector: 'app-main-page',
@@ -48,15 +39,23 @@ import { TouchScrollerDirective, WheelDirective } from '@directives';
   styleUrls: ['./main.component.scss'],
   providers: [EventsService],
 })
-export class MainComponent {
-  private gearService = inject(GearService);
+export class MainComponent implements OnInit {
+  private gearService: GearService = inject(GearService);
+  private langService: LangService = inject(LangService);
 
   public currentScreen: WritableSignal<number> =
     this.gearService.currentScreen$i;
 
   public screens: string[] = screensArray;
 
-  // public ngOnDestroy(): void {
-  //   this.subscriptions.forEach((s) => s?.unsubscribe());
-  // }
+  public ngOnInit(): void {
+    this.initialiseLanguge();
+  }
+
+  private initialiseLanguge(): void {
+    const storageLang = window.localStorage.getItem('lang');
+    const initialLang = storageLang || LangEnum.ENG;
+
+    this.langService.changeLang(initialLang as LangEnum);
+  }
 }

@@ -10,6 +10,13 @@ h1 {
   width: 100dvw;
   height: 100dvh;
 
+  h2 {
+    font-size: 3vmax;
+    font-family: Roboto, sans-serif;
+    position: absolute;
+    top: 0;
+  }
+
   .cont {
     position: relative;
     display: flex;
@@ -145,6 +152,21 @@ h1 {
         }
         &:nth-child(6) {
           transform-origin: bottom right;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .third-screen {
+    .cont .element {
+      .description {
+        p {
+          font-size: 2vmin;
+        }
+        > a {
+          font-size: 1.8vmin;
         }
       }
     }

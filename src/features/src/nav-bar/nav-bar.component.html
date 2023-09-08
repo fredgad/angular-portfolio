@@ -9,13 +9,17 @@
       <ng-container *ngIf="barPoint.isRoute; else externalLink">
         <!-- Router Link -->
         <a (click)="toggleNav()" [target]="barPoint?.target" 
-        [routerLink]="barPoint.link">{{ barPoint.name }}</a>
+          [routerLink]="isEngLang$i() ? barPoint.link : barPoint.linkRu">
+          {{ isEngLang$i() ? barPoint.name : barPoint.nameRu }}
+        </a>
       </ng-container>
       
       <ng-template #externalLink>
         <!-- External Website Link -->
         <a (click)="toggleNav()" [target]="barPoint?.target" 
-        [href]="barPoint.link" >{{ barPoint.name }}</a>
+          [href]="isEngLang$i() ? barPoint.link : barPoint.linkRu" >
+          {{ isEngLang$i() ? barPoint.name : barPoint.nameRu }}
+        </a>
       </ng-template>
     </div>
   </div>

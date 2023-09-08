@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BarMenu } from '@constants';
 import { BarMenuI } from '@interfaces';
 import { timer } from 'rxjs';
 import { NavBarAnimation, NavBarAnimationStateEnum } from '@animations';
 import { RouterModule } from '@angular/router';
+import { LangService } from '@services';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,6 +16,10 @@ import { RouterModule } from '@angular/router';
   animations: [NavBarAnimation],
 })
 export class NavBarComponent {
+  private langService: LangService = inject(LangService);
+
+  public isEngLang$i: Signal<boolean> = this.langService.isEngLang$i;
+
   public isOpenNav = false;
   public navEnum: typeof NavBarAnimationStateEnum = NavBarAnimationStateEnum;
   public pause = false;

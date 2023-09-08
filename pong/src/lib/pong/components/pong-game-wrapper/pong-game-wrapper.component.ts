@@ -81,10 +81,6 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initPongGame();
 
-    this.fieldSizes$.subscribe((x) => {
-      console.log(x, 'fieldSizes');
-    });
-
     this.subscriptions = [
       this.ball$.subscribe((x) => {
         this.ballPosX = x.ballPos_X;

@@ -10,7 +10,9 @@ export interface GearImagesI {
 
 export interface BarMenuI {
   name: string;
+  nameRu: string;
   link: string;
+  linkRu?: string;
   isRoute?: boolean;
   target?: string;
   download?: string;

@@ -56,8 +56,8 @@
         margin-left: auto;
         margin-right: auto;
         margin-top: 30px;
-        height: 225px;
-        width: 225px;
+        height: 22.5vmax;
+        width: 22.5vmax;
         overflow: hidden;
         transition: 0.5s;
         animation: div1 2000s linear infinite reverse;
@@ -67,8 +67,8 @@
           box-sizing: border-box;
           transform-origin: 50% 50%;
           overflow: hidden;
-          width: 225px;
-          height: 225px;
+          width: 22.5vmax;
+          height: 22.5vmax;
         }
         > div {
           transition: 0.5s;
@@ -82,13 +82,13 @@
               transition: 0.5s;
               position: relative;
               display: flex;
-              width: 300px;
-              height: 300px;
+              width: 30vmax;
+              height: 30vmax;
               justify-content: center;
               align-items: center;
               animation: div3 4000s linear infinite reverse;
-              top: -37.5px;
-              left: -37.5px;
+              top: -3.75vmax;
+              left: -3.75vmax;
 
               .image {
                 position: fixed;
@@ -127,10 +127,17 @@
         width: 100%;
         padding: 40px 2dvw 20px 2dvw;
         box-sizing: border-box;
+
+        span {
+          display: block;
+          &:nth-child(1) {
+            margin-bottom: 16px;
+          }
+        }
       }
     }
     .about-me__cont:hover {
-      box-shadow: inset -3px 0px 5px #932e96;
+      box-shadow: inset -3px 0px 0.8vmin #932e96;
     }
   }
   .skills {
@@ -212,7 +219,7 @@
       }
     }
     .skills__cont:hover {
-      box-shadow: inset -3px 0px 5px #932e96;
+      box-shadow: inset -3px 0px 0.8vmin #932e96;
     }
     .skills__cont.lineOff {
       div span {
@@ -257,15 +264,15 @@
         padding-left: 2dvw;
         padding-right: 2dvw;
         transition: 0.2s;
-        margin: 0;
+        margin: 10px 0;
       }
       a {
         text-decoration: none;
+        text-align: center;
         color: #222;
-        margin-top: -16px;
+        font-size: 16px;
         padding: 0;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 4px auto;
       }
       a:hover {
         color: #932e96;
@@ -275,7 +282,7 @@
       }
     }
     .experience__cont:hover {
-      box-shadow: inset -3px 0px 5px #932e96;
+      box-shadow: inset -3px 0px 0.8vmin #932e96;
     }
   }
   .contacts {
@@ -296,6 +303,38 @@
         color: #222;
         margin-bottom: 20px;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tabs {
+    > div {
+      h2 {
+        font-size: 2vmax;
+      }
+      p {
+        font-size: 2vmax;
+      }
+    }
+    .skills .skills__cont > div {
+      p {
+        min-width: 8vmax;
+        font-size: 1.2vmax;
+      }
+      span {
+        height: 7px;
+      }
+    }
+    .experience .experience__cont {
+      padding: 1vmax 0;
+      p,
+      a {
+        font-size: 2vmax;
+      }
+    }
+    .contacts div a {
+      font-size: 2vmax;
     }
   }
 }

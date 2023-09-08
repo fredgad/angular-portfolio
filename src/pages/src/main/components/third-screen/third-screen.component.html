@@ -1,45 +1,76 @@
 <div class="third-screen">
+  <h2>{{ isEngLang$i() ? 'Works' : 'Работы' }}</h2>
   <div class="cont" [class.top]="isTopClass" [class.right]="isRightClass">
-    <div  class="element" (click)="onClick(1)">
+    <div  class="element">
       <img [ngSrc]="imagesPaths + 'Screenshot_2-min.jpg'" width="100" height="100" priority>
       <div class="description">
-        <p>React application with firebase registration and database.</p>
-        <a [href]="barMenu[1].link" target="_blank">Watch</a>
+        <p>
+          {{isEngLang$i() ?
+            'React application with firebase registration and database.' :
+            'React приложение с регистрацией и базой данных Firebase'
+          }}
+        </p>
+        <a [href]="barMenu[1].link" target="_blank">{{ isEngLang$i() ? 'Watch' : 'Перейти' }}</a>
       </div>
     </div>
-    <div  class="element" (click)="onClick(2)">
+    <div  class="element">
       <img [ngSrc]="imagesPaths + 'Screenshot_3-min.jpg'" width="100" height="100" priority>
       <div class="description">
-        <p>Vue Application with the Puzzle Game 'Fifteen' and Charts.</p>
-        <a [href]="barMenu[2].link" target="_blank">Watch</a>
+        <p>
+          {{isEngLang$i() ?
+            'Vue Application with the Puzzle Game "Fifteen" and Charts.' :
+            'Vue приложение с игрой "Пятнашки" и инфографиками.'
+          }}
+        </p>
+        <a [href]="barMenu[2].link" target="_blank">{{ isEngLang$i() ? 'Watch' : 'Перейти' }}</a>
       </div>
     </div>
-    <div  class="element" (click)="onClick(3)">
+    <div  class="element">
       <img [ngSrc]="imagesPaths + 'Screenshot_4-min.jpg'" width="100" height="100" priority>
       <div class="description">
-        <p>Angular NgRx Pong game.</p>
-        <a [href]="barMenu[3].link" target="_blank">Watch</a>
+        <p>
+          {{isEngLang$i() ?
+            'Angular NgRx Pong game.' :
+            'Angular NgRx игра Понг.'
+          }}
+        </p>
+        <a [href]="barMenu[3].link" target="_blank">{{ isEngLang$i() ? 'Watch' : 'Перейти' }}</a>
       </div>
     </div>
-    <div  class="element" (click)="onClick(4)">
+    <div  class="element">
       <img [ngSrc]="imagesPaths + 'Screenshot_6-min.jpg'" width="100" height="100" priority>
       <div class="description">
-        <p>Canvas website congratulations with Firework and music.</p>
-        <a [href]="barMenu[5].link" target="_blank">Watch</a>
+        <p>
+          {{isEngLang$i() ?
+            'Canvas website congratulations with Firework and music.' :
+            'Поздравления на Canvas сайте с фейерверком и музыкой.'
+          }}
+        </p>
+        <a [href]="barMenu[4].link" target="_blank">{{ isEngLang$i() ? 'Watch' : 'Перейти' }}</a>
       </div>
     </div>
-    <div  class="element" (click)="onClick(5)">
+    <div  class="element">
       <img [ngSrc]="imagesPaths + 'Screenshot_5-min.jpg'" width="100" height="100" priority>
       <div class="description">
-        <p>Canvas website birthday congratulations with some animations.</p>
-        <a [href]="barMenu[6].link" target="_blank">Watch</a>
+        <p>
+          {{isEngLang$i() ?
+            'Canvas website birthday congratulations with some animations.' :
+            'Поздравления с днем рождения на Canvas сайте с анимацией.'
+          }}
+        </p>
+        <a [href]="barMenu[5].link" target="_blank">{{ isEngLang$i() ? 'Watch' : 'Перейти' }}</a>
       </div>
     </div>
-    <div  class="element" (click)="onClick(6)">
+    <div  class="element">
       <img [ngSrc]="imagesPaths + 'Screenshot_1-min.jpg'" width="100" height="100" priority>
       <div class="description">
-        <p>Please take the test, it's important to me, thank you very much.</p>
-        <a [href]="barMenu[7].link" target="_blank">Watch</a>
+        <p>
+          {{isEngLang$i() ?
+            "Please take the test, it's important to me, thank you very much." :
+            'Пожалуйста, пройдите тест, для меня это важно, большое спасибо.'
+          }}
+        </p>
+        <a [href]="barMenu[6].link" target="_blank">{{ isEngLang$i() ? 'Watch' : 'Перейти' }}</a>
       </div>
     </div>
   </div>

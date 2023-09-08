@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LangService } from '@services';
 
@@ -10,9 +10,9 @@ import { LangService } from '@services';
   styleUrls: ['./lang.component.scss'],
 })
 export class LangComponent {
-  private langService = inject(LangService);
+  private langService: LangService = inject(LangService);
 
-  public lang$i = this.langService.lang$i;
+  public isEngLang$i: Signal<boolean> = this.langService.isEngLang$i;
 
   public changeLang(): void {
     this.langService.changeLang();

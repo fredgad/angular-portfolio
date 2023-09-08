@@ -18,10 +18,13 @@ export class LangService {
 
   public changeLang(lang?: LangEnum): void {
     if (lang) {
+      window.localStorage.setItem('lang', lang);
       this.lang$i.set(lang);
     } else {
       this.lang$i.update((value) => {
-        return value === LangEnum.ENG ? LangEnum.RUS : LangEnum.ENG;
+        const nextLang = value === LangEnum.ENG ? LangEnum.RUS : LangEnum.ENG;
+        window.localStorage.setItem('lang', nextLang);
+        return nextLang;
       });
     }
   }

@@ -2,8 +2,8 @@
   <div class="about-me" [ngStyle]="{ 'transform': tabsPositions[0] }">
       <h2>{{ isEngLang$i() ? 'About me' : 'Обо мне' }}</h2>
       <div
-        (scroll)="onScroll($event)" 
-        (wheel)="onWheel($event)"
+        (scroll)="onScroll($event, 1)" 
+        (wheel)="onWheel($event, 1)"
         (touchstart)="touchStart()"
         (touchend)="touchEnd()"
         (touccansel)="touchEnd()"
@@ -19,37 +19,24 @@
                   </div>
               </div>
           </div>
-          <p>
-            I'm 30 years old.
-  An optimist with a technical outlook on the world. I approach challenges 
-  with a calm and patient demeanor, coupled with ambitious goals.
-  Like to make various kinds of interactive animations and games.
-  Lead a healthy lifestyle, fond of philosophy and science, and active in 
-  sports.
-  I believe that a goal is exactly what you need for a happy life.
-  
-  Not merried.
-          </p>
 
-          <!-- <p 
-          data-r="26 лет
-              Оптимист с техническим взглядом на мир. Спокойный, терпеливый и амбициозный. Практикую собственную технику управления временем на основе метода Помидора. Совершенствуюсь в скорости набора текста. Люблю делать различного рода интерактивные анимации и игры. Веду здоровый образ жизни, увлекаюсь философией, активно занимаюсь спортом и изучаю английский. 
-              Считаю, что цель - это именно то, что нужно для счастливой жизни.
-              Служил в армии, холост." 
-          data-e="I'm 26 years old
-              An optimist with a technical outlook on the world. Calm, patient and ambitious. I practice my own time management technique based on the Tomato method. Improving the speed of typing. Like to make various kinds of interactive animations and games. Lead a healthy lifestyle, fond of philosophy, active in sports and learn English. 
-              Believe that the goal is exactly what you need for a happy life.
-              Served in the army, single."
-          class="L" >
-              I'm 26 years old
-              An optimist with a technical outlook on the world. Calm, patient and ambitious.
-              I practice my own time management technique based on the Tomato method.
-              Improving the speed of typing.
-              Like to make various kinds of interactive animations and games.
-              Lead a healthy lifestyle, fond of philosophy, active in sports and learn English.
-              Believe that the goal is exactly what you need for a happy life.
-              Served in the army, single.
-          </p> -->
+          <p>
+            <span>{{ isEngLang$i() ?
+                "I'm 30 years old. "
+                : '30 лет.'
+                }}
+            </span>
+            <span>{{ isEngLang$i() ?
+                "An optimist with a technical view of the world. I love to create various kinds of interactive animations and games. Lead a healthy lifestyle, fond of philosophy and science, active in sports and learn English. I face challenges with calm and patience on the way to ambitious goals."
+                : "Оптимист с техническим взглядом на мир. Спокойный, терпеливый и амбициозный. Люблю делать различного рода интерактивные анимации и игры. Веду здоровый образ жизни, увлекаюсь философией и наукой, активно занимаюсь спортом, и изучаю английский."
+                }}
+            </span>
+            <span>{{ isEngLang$i() ?
+                "I believe that a goal is exactly what you need for a happy life."
+                : 'Считаю, что цель - это именно то, что нужно для счастливой жизни.'
+                }}
+            </span>
+          </p>
       </div>
   </div>
 
@@ -115,28 +102,46 @@
   <div class="experience" [ngStyle]="{ 'transform': tabsPositions[2] }">
       <h2>{{ isEngLang$i() ? 'Experience' : 'Опыт' }}</h2>
       <div
+        (scroll)="onScroll($event, 2)" 
+        (wheel)="onWheel($event, 2)"
         (touchstart)="touchStart()"
         (touchend)="touchEnd()"
-        (touccansel)="touchEnd()" 
-        (mouseenter)="mouseTabsEvent(true)" 
+        (touccansel)="touchEnd()"
+        (mouseenter)="mouseTabsEvent(true)"
         (mouseleave)="mouseTabsEvent(false)"
-        class="experience__cont">
-          <p class="L" 
-          data-r="Работы представленные в портфолио - только часть того, что я делал для практики." 
-          data-e="The work that is presented in my portfolio is only the third part of what I did myself for practice.">
-              The work that is presented in my portfolio is only the third part of what I did myself for practice. 
+        class="experience__cont scrollable-element-two">
+          <p>{{ isEngLang$i() ?
+                'Proficient in Angular (Version 9+) - 2 years and 8 months of hands-on experience in commercial development, following Agile methodologies. Mainly worked on online stores. Participated in the migration of a project from React to Angular. Worked on complex project that encompassed two separate brands and accommodated diverse B2B and B2C interactions within a single projec. Using feature-slice architecture. Git-flow, trunk based development.' :
+                'Angular (версия 9+) - обширный практический опыт коммерческой разработки по Agile методологии - 2 года и 8 месяцев. В основном работал с интернет-магазинами. Участвовал в миграции проекта с React на Angular. Работал над сложным проектом, охватывающим два отдельных бренда и обеспечивающим разнообразные взаимодействия (B2B и B2C) в рамках одного проекта. Фича-слайс архитектура. Git-flow, trunk based development.'
+          }}
           </p>
-          <p class="L" 
-          data-r="Также у меня есть пять месяцев коммерческого опыта в офисе (OP Linux). Работал в основном с CMS FlexcoreCMS: интеграция, отладка, перенос сайтов, адаптация сайтов для мобильных устройств и планшетов, встраивание ajax и т. д." 
-          data-e="I also have five months of commercial experience in the office (OP Linux). Worked primarily with CMS FlexcoreCMS: integration, debugging, site transfer, site adaptation for mobile devices and tablets, embedding ajax and so on...">
-              I also have five months of commercial experience in the office (OP Linux). Worked primarily with CMS FlexcoreCMS: integration, debugging, site transfer, site adaptation for mobile devices and tablets, embedding ajax and so on...
+          <p>{{ isEngLang$i() ?
+                'Five months commercial development experience on React(Redux).' :
+                'Пятимесячный опыт коммерческой разработки на React (Redux).'
+            }}
           </p>
-          <p class="L" 
-          data-r="В моем портфолио два сайта, сделанные мной с нуля:" 
-          data-e="In my portfolio two sites made by me from the beginning:">
-              In my portfolio two sites made by me from the beginning:
+          <p>{{ isEngLang$i() ?
+                "Four months experience in the layout of mailing lists and the development of infographics and interactive tables on Vue for the company's internal website." :
+                'Четыре месяца опыта вёрстки почтовых рассылок и разработки инфографиков, и интерактивных таблиц на Vue для внутреннего сайта компании.'
+            }}
           </p>
-              &nbsp;
+          <p>{{ isEngLang$i() ?
+                'I also have five months of commercial experience with (OP Linux). Worked primarily with CMS FlexcoreCMS: integration, debugging, layout websites, site adaptation for mobile devices and tablets and so on...' :
+                'Также у меня есть пять месяцев коммерческого опыта c (OP Linux). Работал в основном с CMS FlexcoreCMS: интеграция, дебагинг, вёрстка сайтов, адаптация сайтов для мобильных устройств и планшетов и т. д.'
+            }}
+          </p>
+          <p>{{ isEngLang$i() ?
+                'During my professional career, I have done layout for more than 30 different web sites from scratch. Here are a couple of them:' :
+                'За свою профессиональную карьеру сделал с нуля вёрстку для более 30 различных сайтов. Вот парочка из них:'
+            }}
+          </p>
+          <a class="experience__cont-link" href="https://courses-adult.web.app/" target="_blank">https://courses-adult.web.app</a>
+          <a class="experience__cont-link" href="https://fluent-site.web.app/" target="_blank">https://fluent-site.web.app</a>
+          <p>{{ isEngLang$i() ?
+                'I like to create various interactive animations and games, some of them can be seen on the next page.' :
+                'Мне нравится создавать различные интерактивные анимации и игры, некоторые из них можно посмотреть на следующей странице.'
+            }}
+          </p>
       </div>
   </div>
 

@@ -8,7 +8,7 @@
 
 h1 {
   position: relative;
-  top: 30px;
+  top: 10vmin;
   text-align: center;
   font-size: 30px;
   position: relative;
@@ -31,7 +31,7 @@ h1 {
 h2 {
   font-family: Roboto, sans-serif;
   position: absolute;
-  top: 25px;
+  top: 10vmin;
   font-size: 10px;
   color: #932e96;
   text-align: center;
@@ -45,8 +45,8 @@ h2 {
   position: absolute;
   font-family: Roboto, sans-serif;
   width: 140px;
-  bottom: 50px;
-  left: calc(50dvw - 70px);
+  bottom: 70px;
+  left: calc(50dvw - 80px);
   text-align: center;
   color: transparent;
   font-size: 10px;
@@ -71,6 +71,15 @@ h2 {
 @media screen and (max-width: 768px) {
   .swipe {
     display: block;
+  }
+}
+
+@media screen and (min-width: 440px) {
+  h1 {
+    font-size: 3vmax;
+  }
+  h2 {
+    font-size: 1vmax;
   }
 }
 

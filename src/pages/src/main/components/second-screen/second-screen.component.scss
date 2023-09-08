@@ -3,12 +3,7 @@
   width: 100%;
   height: 100%;
   background: white;
-
   font-family: Roboto, sans-serif;
-
-  // > div {
-  //   height: 100vh;
-  // }
 
   .about {
     position: relative;
@@ -31,7 +26,6 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      // align-items: center;
       justify-content: center;
       left: 40%;
       width: 60%;
@@ -69,5 +63,17 @@
 
   app-tabs {
     display: flex;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .second-screen > .about {
+    h2 {
+      font-size: 2vmax;
+    }
+    .about__menu > div {
+      font-size: 1.5vmax;
+      width: 10dvw;
+    }
   }
 }

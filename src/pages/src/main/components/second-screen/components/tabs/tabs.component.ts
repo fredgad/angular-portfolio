@@ -21,6 +21,7 @@ export class TabsComponent implements AfterViewInit {
   private tabsService: TabsService = inject(TabsService);
   private langService: LangService = inject(LangService);
   private scrollableElement!: HTMLElement;
+  private scrollableElementTwo!: HTMLElement;
 
   public tabsPositions$: Observable<string[]> = this.tabsService.tabsPositions$;
   public currentTab$i = this.tabsService.currentTab$i;
@@ -31,6 +32,9 @@ export class TabsComponent implements AfterViewInit {
   public ngAfterViewInit(): void {
     this.scrollableElement = this.elementRef.nativeElement.querySelector(
       '.scrollable-element'
+    );
+    this.scrollableElementTwo = this.elementRef.nativeElement.querySelector(
+      '.scrollable-element-two'
     );
   }
 
@@ -48,9 +52,6 @@ export class TabsComponent implements AfterViewInit {
 
   public touchStart(): void {
     this.tabsService.setTouchEnteredTab(true);
-    // timer(200).subscribe(() => {
-    //   this.tabsService.setEnteredTab(false);
-    // });
   }
 
   public touchEnd(): void {
@@ -60,17 +61,35 @@ export class TabsComponent implements AfterViewInit {
   }
 
   public touchCansel(): void {
-    console.log('asdasdfa');
     this.tabsService.setTouchEnteredTab(false);
   }
 
-  public onScroll(event: Event) {
+  public onScroll(event: Event, tab: number) {
     const element = event.target as HTMLElement;
-    const isScrollingDown =
-      element.scrollTop > this.scrollableElement.scrollTop;
+    let isScrollingDown;
+
+    if (tab === 1) {
+      isScrollingDown = element.scrollTop > this.scrollableElement.scrollTop;
+    } else if (tab === 2) {
+      isScrollingDown = element.scrollTop > this.scrollableElementTwo.scrollTop;
+    }
+
+    const elHeight = element.scrollHeight - element.clientHeight;
+
     const isAtBottom =
-      element.scrollHeight - element.clientHeight ===
-      Math.round(element.scrollTop);
+      elHeight === Math.round(element.scrollTop) ||
+      Math.abs(elHeight - Math.round(element.scrollTop)) === 1;
+
+    if (element.scrollTop !== elHeight && Math.round(element.scrollTop) !== 0) {
+      this.tabsService.setAllowedTop(false);
+      this.tabsService.setAllowedBot(false);
+    }
+
+    console.log(
+      elHeight,
+      Math.round(element.scrollTop),
+      '.scrollHeight .scrollTop'
+    );
     if (isAtBottom) {
       console.log('User finished scrolling to the bottom');
       this.tabsService.setAllowedTop(false);
@@ -84,8 +103,10 @@ export class TabsComponent implements AfterViewInit {
     }
   }
 
-  onWheel(event: WheelEvent) {
-    const element = this.scrollableElement;
+  onWheel(event: WheelEvent, tab: number): void {
+    const element: HTMLElement =
+      tab === 1 ? this.scrollableElement : this.scrollableElementTwo;
+
     const isScrollingUp = event.deltaY < 0;
 
     if (isScrollingUp && element.scrollTop === 0) {

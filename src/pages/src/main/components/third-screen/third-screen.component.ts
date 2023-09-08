@@ -1,6 +1,6 @@
-import { Component, effect } from '@angular/core';
+import { Component, OnInit, Signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GearService } from '@services';
+import { GearService, LangService } from '@services';
 import { NgOptimizedImage } from '@angular/common';
 import { BarMenu } from '@constants';
 import { BarMenuI } from '@interfaces';
@@ -12,7 +12,7 @@ import { BarMenuI } from '@interfaces';
   templateUrl: './third-screen.component.html',
   styleUrls: ['./third-screen.component.scss'],
 })
-export class ThirdScreenComponent {
+export class ThirdScreenComponent implements OnInit {
   public currentScreen$i = this.gearService.currentScreen$i;
   public barMenu: BarMenuI[] = BarMenu;
 
@@ -20,7 +20,12 @@ export class ThirdScreenComponent {
   public isTopClass = true;
   public isRightClass = false;
 
-  constructor(private gearService: GearService) {
+  public isEngLang$i: Signal<boolean> = this.langService.isEngLang$i;
+
+  constructor(
+    private gearService: GearService,
+    private langService: LangService
+  ) {
     effect(() => {
       switch (this.currentScreen$i()) {
         case 1:
@@ -37,11 +42,7 @@ export class ThirdScreenComponent {
     });
   }
 
-  public onClick(num: number): void {
-    console.log(num);
-  }
-
-  ngOnInit(): void {
+  public ngOnInit(): void {
     console.log(this.currentScreen$i());
   }
 }

@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { CommonModule, KeyValue } from '@angular/common';
 import {
   CubePositionI,
@@ -15,6 +22,7 @@ import { CubeInitialPositions } from '../entities/cube.constants';
   imports: [CommonModule, EdgeCubeComponent],
   templateUrl: './cube-page.component.html',
   styleUrls: ['./cube-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CubePageComponent implements OnInit, OnDestroy {
   @Input() set currentPage(value: number) {

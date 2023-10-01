@@ -1,4 +1,10 @@
-import { Component, Signal, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Signal,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BarMenu } from '@constants';
 import { BarMenuI } from '@interfaces';
@@ -14,8 +20,10 @@ import { LangService } from '@services';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss'],
   animations: [NavBarAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavBarComponent {
+  private cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
   private langService: LangService = inject(LangService);
 
   public isEngLang$i: Signal<boolean> = this.langService.isEngLang$i;
@@ -39,6 +47,7 @@ export class NavBarComponent {
           const z = this.barMenu.length - x - 1;
           this.barMenu[z].state = !this.barMenu[z].state;
         }
+        this.cdr.markForCheck();
       });
     }
     timer(200).subscribe(() => {

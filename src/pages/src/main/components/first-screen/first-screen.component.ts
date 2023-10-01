@@ -1,4 +1,10 @@
-import { Component, Signal, computed, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Signal,
+  computed,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GearService, LangService } from '@services';
 
@@ -8,6 +14,7 @@ import { GearService, LangService } from '@services';
   imports: [CommonModule],
   templateUrl: './first-screen.component.html',
   styleUrls: ['./first-screen.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FirstScreenComponent {
   private langService: LangService = inject(LangService);

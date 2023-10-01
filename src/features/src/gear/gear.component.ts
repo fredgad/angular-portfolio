@@ -1,4 +1,10 @@
-import { Component, Input, Signal, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Signal,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BackgroundImageDirective } from '@directives';
 import { TrackByPropertyPipe } from '@pipes';
@@ -12,6 +18,7 @@ import { GearService } from '@services';
   imports: [CommonModule, BackgroundImageDirective, TrackByPropertyPipe],
   templateUrl: './gear.component.html',
   styleUrls: ['./gear.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GearComponent {
   @Input() public screen = 0;

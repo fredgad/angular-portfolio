@@ -1,4 +1,10 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subscription, timer } from 'rxjs';
 import {
@@ -15,13 +21,12 @@ import {
   reverseBallXSpeed,
   reverseBallYSpeed,
 } from '../../store/pong.actions';
-import { Ball, Field, Game, PongState, Walls } from '../../store/pong.reducer';
+import { Ball, Field, Game, Walls } from '../../store/pong.reducer';
 import {
   AppWithPongState,
   selectBall,
   selectFieldSizes,
   selectGame,
-  selectStore,
   selectWalls,
 } from '../../store/pong.selectors';
 import { PongGameComponent } from '../pong-game/pong-game.component';
@@ -33,6 +38,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, PongGameComponent],
   templateUrl: './pong-game-wrapper.component.html',
   styleUrls: ['./pong-game-wrapper.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PongGameWrapperComponent implements OnInit, OnDestroy {
   private ball$: Observable<Ball> = this.store$.pipe(select(selectBall));

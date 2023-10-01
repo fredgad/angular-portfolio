@@ -1,11 +1,11 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
-  Signal,
   WritableSignal,
   effect,
-  inject,
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,6 +17,7 @@ import { GearService } from '@services';
   imports: [CommonModule],
   templateUrl: './music.component.html',
   styleUrls: ['./music.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MusicComponent implements AfterViewInit {
   private audioPlayer!: HTMLAudioElement;
@@ -28,7 +29,11 @@ export class MusicComponent implements AfterViewInit {
   public audioSource = '../../assets/audio/just-relax-11157.mp3';
   public isOpen = false;
 
-  constructor(private el: ElementRef, private gearService: GearService) {
+  constructor(
+    private el: ElementRef,
+    private gearService: GearService,
+    private cdr: ChangeDetectorRef
+  ) {
     effect(() => {
       switch (this.currentScreen$i()) {
         case 0:
@@ -44,6 +49,7 @@ export class MusicComponent implements AfterViewInit {
           this.isOpen = true;
           break;
       }
+      this.cdr.markForCheck();
     });
   }
 

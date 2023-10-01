@@ -1,4 +1,9 @@
-import { Component, WritableSignal, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  WritableSignal,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GearService } from '@services';
 import { CubePageComponent } from '@app/cube';
@@ -9,6 +14,7 @@ import { CubePageComponent } from '@app/cube';
   imports: [CommonModule, CubePageComponent],
   templateUrl: './fourth-screen.component.html',
   styleUrls: ['./fourth-screen.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FourthScreenComponent {
   private gearService = inject(GearService);

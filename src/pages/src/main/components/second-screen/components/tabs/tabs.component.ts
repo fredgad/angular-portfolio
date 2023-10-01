@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LangService, TabsService } from '@services';
 import { BackgroundImageDirective } from '@directives';
@@ -10,6 +16,7 @@ import { Observable, timer } from 'rxjs';
   imports: [CommonModule, BackgroundImageDirective],
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsComponent implements AfterViewInit {
   private tabsService: TabsService = inject(TabsService);
@@ -93,7 +100,7 @@ export class TabsComponent implements AfterViewInit {
     }
   }
 
-  onWheel(event: WheelEvent, tab: number): void {
+  public onWheel(event: WheelEvent, tab: number): void {
     const element: HTMLElement =
       tab === 1 ? this.scrollableElement : this.scrollableElementTwo;
 

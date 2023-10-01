@@ -1,4 +1,9 @@
-import { Component, WritableSignal, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  WritableSignal,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface TransformI {
@@ -14,6 +19,7 @@ type xyzT = 'X' | 'Y' | 'Z';
   imports: [CommonModule],
   templateUrl: './rotate.component.html',
   styleUrls: ['./rotate.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RotateComponent {
   public transform: WritableSignal<TransformI> = signal({

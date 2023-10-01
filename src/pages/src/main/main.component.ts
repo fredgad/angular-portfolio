@@ -1,4 +1,10 @@
-import { Component, OnInit, WritableSignal, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  WritableSignal,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FirstScreenComponent,
@@ -38,6 +44,7 @@ import { LangEnum } from '@interfaces';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
   providers: [EventsService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainComponent implements OnInit {
   private gearService: GearService = inject(GearService);

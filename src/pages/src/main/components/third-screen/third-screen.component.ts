@@ -1,4 +1,10 @@
-import { Component, Signal, effect } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Signal,
+  effect,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GearService, LangService } from '@services';
 import { NgOptimizedImage } from '@angular/common';
@@ -11,6 +17,7 @@ import { BarMenuI } from '@interfaces';
   imports: [CommonModule, NgOptimizedImage],
   templateUrl: './third-screen.component.html',
   styleUrls: ['./third-screen.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThirdScreenComponent {
   public currentScreen$i = this.gearService.currentScreen$i;
@@ -24,7 +31,8 @@ export class ThirdScreenComponent {
 
   constructor(
     private gearService: GearService,
-    private langService: LangService
+    private langService: LangService,
+    private cdr: ChangeDetectorRef
   ) {
     effect(() => {
       switch (this.currentScreen$i()) {
@@ -39,6 +47,7 @@ export class ThirdScreenComponent {
           this.isRightClass = true;
           break;
       }
+      this.cdr.markForCheck();
     });
   }
 }

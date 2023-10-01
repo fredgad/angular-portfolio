@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { GearService, LangService, TabsService } from '@services';
@@ -9,6 +15,7 @@ import { GearService, LangService, TabsService } from '@services';
   imports: [CommonModule, TabsComponent],
   templateUrl: './second-screen.component.html',
   styleUrls: ['./second-screen.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SecondScreenComponent implements AfterViewInit {
   @ViewChild('aboutMeRef', { static: true }) aboutMeRef!: ElementRef;

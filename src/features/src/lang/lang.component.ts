@@ -1,4 +1,9 @@
-import { Component, Signal, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Signal,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LangService } from '@services';
 
@@ -8,6 +13,7 @@ import { LangService } from '@services';
   imports: [CommonModule],
   templateUrl: './lang.component.html',
   styleUrls: ['./lang.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LangComponent {
   private langService: LangService = inject(LangService);

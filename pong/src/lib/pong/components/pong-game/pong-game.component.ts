@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'pong-game',
   standalone: true,
   templateUrl: './pong-game.component.html',
   styleUrls: ['./pong-game.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PongGameComponent {
   @Input() fieldWidth = 0;

@@ -33,20 +33,20 @@ export class RotateComponent {
     Z: 0,
   });
 
-  public addPos(side: xyzT, angle: number) {
+  public addPos(side: xyzT, angle: number): void {
     this.transform.mutate((x) => {
       x[side] = x[side] + angle;
     });
   }
 
-  public addPos2(side: xyzT, angle: number) {
+  public addPos2(side: xyzT, angle: number): void {
     const newAngle = angle > 0 ? (90 * Math.PI) / 180 : -(90 * Math.PI) / 180;
 
     this.transform2.mutate((x) => {
       x[side] = x[side] + newAngle;
     });
   }
-  public addPos3(side: xyzT, angle: number) {
+  public addPos3(side: xyzT, angle: number): void {
     this.transform3.mutate((x) => {
       x[side] = x[side] + angle;
     });

@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LangService, TabsService } from '@services';
 import { BackgroundImageDirective } from '@directives';
@@ -20,6 +14,7 @@ import { Observable, timer } from 'rxjs';
 export class TabsComponent implements AfterViewInit {
   private tabsService: TabsService = inject(TabsService);
   private langService: LangService = inject(LangService);
+
   private scrollableElement!: HTMLElement;
   private scrollableElementTwo!: HTMLElement;
 
@@ -64,7 +59,7 @@ export class TabsComponent implements AfterViewInit {
     this.tabsService.setTouchEnteredTab(false);
   }
 
-  public onScroll(event: Event, tab: number) {
+  public onScroll(event: Event, tab: number): void {
     const element = event.target as HTMLElement;
     let isScrollingDown;
 
@@ -85,19 +80,14 @@ export class TabsComponent implements AfterViewInit {
       this.tabsService.setAllowedBot(false);
     }
 
-    console.log(
-      elHeight,
-      Math.round(element.scrollTop),
-      '.scrollHeight .scrollTop'
-    );
     if (isAtBottom) {
-      console.log('User finished scrolling to the bottom');
+      // console.log('User finished scrolling to the bottom');
       this.tabsService.setAllowedTop(false);
       this.tabsService.setAllowedBot(true);
     }
 
     if (!isScrollingDown && element.scrollTop === 0) {
-      console.log('User finished scrolling to the top');
+      // console.log('User finished scrolling to the top');
       this.tabsService.setAllowedTop(true);
       this.tabsService.setAllowedBot(false);
     }

@@ -14,12 +14,10 @@ export class TabsService {
   public isAllowedBot$i = signal(true);
 
   public setAllowedTop(value: boolean): void {
-    console.log(value, 'setAllowedTop');
     this.isAllowedTop$i.set(value);
   }
 
   public setAllowedBot(value: boolean): void {
-    console.log(value, 'setAllowedBot');
     this.isAllowedBot$i.set(value);
   }
 

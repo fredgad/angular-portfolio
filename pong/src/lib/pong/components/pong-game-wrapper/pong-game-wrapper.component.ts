@@ -1,18 +1,11 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  HostListener,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { BehaviorSubject, Observable, Subscription, timer } from 'rxjs';
+import { Observable, Subscription, timer } from 'rxjs';
 import {
   addBallPositions,
   addFieldSizes,
   addGoalBlue,
   addGoalRed,
-  addWallBotPos,
   addWallsWidth,
   addWallTopPos,
   offGoalOut,
@@ -42,11 +35,13 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./pong-game-wrapper.component.scss'],
 })
 export class PongGameWrapperComponent implements OnInit, OnDestroy {
-  fieldSizes$: Observable<Field> = this.store$.pipe(select(selectFieldSizes));
-  ball$: Observable<Ball> = this.store$.pipe(select(selectBall));
-  walls$: Observable<Walls> = this.store$.pipe(select(selectWalls));
-  store2$: Observable<PongState> = this.store$.pipe(select(selectStore));
-  game$: Observable<Game> = this.store$.pipe(select(selectGame));
+  private ball$: Observable<Ball> = this.store$.pipe(select(selectBall));
+  private walls$: Observable<Walls> = this.store$.pipe(select(selectWalls));
+  private game$: Observable<Game> = this.store$.pipe(select(selectGame));
+
+  public fieldSizes$: Observable<Field> = this.store$.pipe(
+    select(selectFieldSizes)
+  );
 
   private windowWidth = window.innerWidth;
 
@@ -78,7 +73,7 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initPongGame();
 
     this.subscriptions = [
@@ -110,7 +105,21 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
     ];
   }
 
-  animation() {
+  private initPongGame(): void {
+    const windowHeight = window.innerHeight;
+    const fieldWidth = this.windowWidth > 500 ? 500 : this.windowWidth - 10;
+    const fieldHeight = windowHeight > 600 ? 600 : windowHeight - 10;
+    const wallsWidth = fieldWidth / 3;
+
+    this.store$.dispatch(
+      addFieldSizes({ width: fieldWidth, height: fieldHeight })
+    );
+    this.store$.dispatch(addWallsWidth({ width: wallsWidth }));
+
+    this.animation();
+  }
+
+  private animation(): void {
     if (!this.pause) {
       requestAnimationFrame(() => {
         this.changePosition();
@@ -119,7 +128,7 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
     }
   }
 
-  changePosition(): void {
+  private changePosition(): void {
     this.ballPosX += this.ballSpeedX;
     this.ballPosY += this.ballSpeedY;
     if (!this.goalOut) {
@@ -134,7 +143,7 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
-  wallsMoovement() {
+  private wallsMoovement(): void {
     if (this.sideOfClick === 'none') {
       return;
     } else if (this.sideOfClick === 'left') {
@@ -148,7 +157,7 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
     this.store$.dispatch(addWallTopPos({ wallTopPos: this.wallTopPos }));
   }
 
-  collisionСhecks(): void {
+  private collisionСhecks(): void {
     if (this.ballPosX + this.ballSize > this.fieldWidth) {
       this.store$.dispatch(reverseBallXSpeed());
     }
@@ -177,7 +186,7 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
     }
   }
 
-  bluegoal() {
+  private bluegoal(): void {
     if (!this.goalOut) {
       this.store$.dispatch(addGoalBlue());
 
@@ -197,7 +206,7 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
     }
   }
 
-  redGoal() {
+  private redGoal(): void {
     if (!this.goalOut) {
       this.store$.dispatch(addGoalRed());
 
@@ -217,7 +226,7 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
     }
   }
 
-  togglePause() {
+  public togglePause(): void {
     if (this.pause) {
       this.store$.dispatch(pauseOff());
       this.animation();
@@ -226,39 +235,24 @@ export class PongGameWrapperComponent implements OnInit, OnDestroy {
     }
   }
 
-  restart() {
+  public restart(): void {
     this.store$.dispatch(restartGame());
   }
 
-  initPongGame(): void {
-    const windowHeight = window.innerHeight;
-    const fieldWidth = this.windowWidth > 500 ? 500 : this.windowWidth - 10;
-    const fieldHeight = windowHeight > 600 ? 600 : windowHeight - 10;
-    const wallsWidth = fieldWidth / 3;
-
-    this.store$.dispatch(
-      addFieldSizes({ width: fieldWidth, height: fieldHeight })
-    );
-    this.store$.dispatch(addWallsWidth({ width: wallsWidth }));
-
-    this.animation();
-  }
-
-  touchDown(event: any): void {
+  public touchDown(event: TouchEvent): void {
     this.sideOfClick =
       event.changedTouches[0].clientX < this.windowWidth / 2 ? 'left' : 'right';
-    console.log(this.sideOfClick, event, this.fieldWidth / 2, 'touchDown');
   }
 
-  mouseDown(event: any): void {
+  public mouseDown(event: MouseEvent): void {
     this.sideOfClick = event.clientX < this.windowWidth / 2 ? 'left' : 'right';
   }
 
-  mouseUp(): void {
+  public mouseUp(): void {
     this.sideOfClick = 'none';
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.subscriptions.forEach((s) => s && s.unsubscribe());
   }
 }

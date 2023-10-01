@@ -51,6 +51,9 @@ export class MainComponent implements OnInit {
   public ngOnInit(): void {
     this.initialiseLanguge();
   }
+  public ngDoCheck(value1: any, value2: any): void {
+    console.log('ngDoCheck', value1, value2);
+  }
 
   private initialiseLanguge(): void {
     const storageLang = window.localStorage.getItem('lang');

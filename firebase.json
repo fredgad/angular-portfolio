@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "ruslan-angular-portfolio",
     "public": "./dist/angular-portfolio",
     "ignore": [
       "firebase.json",

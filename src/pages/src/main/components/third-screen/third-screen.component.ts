@@ -1,4 +1,4 @@
-import { Component, OnInit, Signal, effect } from '@angular/core';
+import { Component, Signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GearService, LangService } from '@services';
 import { NgOptimizedImage } from '@angular/common';
@@ -12,7 +12,7 @@ import { BarMenuI } from '@interfaces';
   templateUrl: './third-screen.component.html',
   styleUrls: ['./third-screen.component.scss'],
 })
-export class ThirdScreenComponent implements OnInit {
+export class ThirdScreenComponent {
   public currentScreen$i = this.gearService.currentScreen$i;
   public barMenu: BarMenuI[] = BarMenu;
 
@@ -40,9 +40,5 @@ export class ThirdScreenComponent implements OnInit {
           break;
       }
     });
-  }
-
-  public ngOnInit(): void {
-    console.log(this.currentScreen$i());
   }
 }

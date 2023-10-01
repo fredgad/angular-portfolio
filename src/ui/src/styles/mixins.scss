@@ -121,31 +121,15 @@
 //   }
 // }
 
-// @function gut($n) {
-//   @return $n * $gutter;
-// }
+@mixin reset-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
 
-// @function pix($px) {
-//   @return unquote($px + "px");
-// }
-
-// @function brandSwitch($lntArg: "", $utkArg: "", $important: "") {
-//   $var: $lntArg;
-//   @if $assetsUrl == "assets-utk/" {
-//     $var: $utkArg;
-//   }
-//   @return unquote($var + " " + $important);
-// }
-
-// @mixin reset-button {
-//   background-color: transparent;
-//   border: none;
-//   padding: 0;
-
-//   &:focus {
-//     outline: none;
-//   }
-// }
+  &:focus {
+    outline: none;
+  }
+}
 
 @mixin ng-deep {
   :host ::ng-deep {

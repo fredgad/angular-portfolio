@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PongGameWrapperComponent } from './components';
+import { PongGameWrapperComponent } from './pong-game-wrapper/pong-game-wrapper.component';
 
 @Component({
   selector: 'pong-page',

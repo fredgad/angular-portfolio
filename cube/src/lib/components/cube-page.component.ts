@@ -3,7 +3,6 @@ import {
   Component,
   Input,
   OnDestroy,
-  OnInit,
   inject,
 } from '@angular/core';
 import { CommonModule, KeyValue } from '@angular/common';
@@ -24,7 +23,7 @@ import { CubeInitialPositions } from '../entities/cube.constants';
   styleUrls: ['./cube-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CubePageComponent implements OnInit, OnDestroy {
+export class CubePageComponent implements OnDestroy {
   @Input() set currentPage(value: number) {
     this.cubeSwiper(value);
   }
@@ -52,14 +51,6 @@ export class CubePageComponent implements OnInit, OnDestroy {
 
   public cubePositions$: Observable<GenericKeyStringObject<CubePositionI>> =
     this.cubeFacade.cubePositions$;
-
-  public ngOnInit(): void {
-    this.subscription.add(
-      this.cubePositions$.subscribe((x) => {
-        this.straight = x['t_l_F'].pos_X === 0;
-      })
-    );
-  }
 
   public cubeSwiper(screen: number): void {
     if (screen === 3) {

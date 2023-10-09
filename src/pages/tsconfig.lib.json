@@ -13,5 +13,22 @@
     "jest.config.ts",
     "src/**/*.test.ts"
   ],
-  "include": ["src/**/*.ts"]
+  "include": [
+    "src/**/*.ts",
+    "rotate/src/index.ts",
+    "src/shared/src/animations/index.ts",
+    "src/features/src/index.ts",
+    "src/pages/src/index.ts",
+    "src/shared/src/index.ts",
+    "src/ui/src/index.ts",
+    "src/shared/src/constants/index.ts",
+    "src/shared/src/directives/index.ts",
+    "src/shared/src/interfaces/index.ts",
+    "src/styles/keyframes.scss",
+    "src/shared/src/pipes/index.ts",
+    "src/shared/src/services/index.ts",
+    "src/shared/src/tokens/index.ts",
+    "pong/src/index.ts",
+    "cube/src/index.ts"
+  ],
 }

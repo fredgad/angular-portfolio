@@ -18,7 +18,6 @@
       "@angular-portfolio/pong": ["pong/src/index.ts"],
       "@angular-portfolio/rotate": ["rotate/src/index.ts"],
       "@animations": ["src/shared/src/animations/index.ts"],
-      "@app/cube": ["cube/src/index.ts"],
       "@app/features": ["src/features/src/index.ts"],
       "@app/pages": ["src/pages/src/index.ts"],
       "@app/pong": ["pong/src/index.ts"],
@@ -30,7 +29,8 @@
       "@keyframes": ["src/styles/keyframes.scss"],
       "@pipes": ["src/shared/src/pipes/index.ts"],
       "@services": ["src/shared/src/services/index.ts"],
-      "@tokens": ["src/shared/src/tokens/index.ts"]
+      "@tokens": ["src/shared/src/tokens/index.ts"],
+      "@app/cube": ["cube/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

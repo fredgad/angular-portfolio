@@ -24,12 +24,12 @@ export const selectFeature = createFeatureSelector<
 
 export const selectCubeData = createSelector(
   selectFeature,
-  (state: CubeStatePropsI): CubePositionsI => state.data
+  (state: CubeStatePropsI): CubePositionsI => state?.data
 );
 
 export const selectCubePositions = createSelector(
   selectCubeData,
   (state: CubePositionsI): GenericKeyStringObject<CubePositionI> => {
-    return state.CubePositions;
+    return state?.CubePositions;
   }
 );

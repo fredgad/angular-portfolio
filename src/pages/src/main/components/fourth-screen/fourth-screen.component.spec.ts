@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideMockStore } from '@ngrx/store/testing';
 import { FourthScreenComponent } from './fourth-screen.component';
 
 describe('FourthScreenComponent', () => {
@@ -8,9 +8,9 @@ describe('FourthScreenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ FourthScreenComponent ]
-    })
-    .compileComponents();
+      imports: [FourthScreenComponent],
+      providers: [provideMockStore({})],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FourthScreenComponent);
     component = fixture.componentInstance;
